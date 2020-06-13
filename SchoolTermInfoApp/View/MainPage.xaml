@@ -8,9 +8,12 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <Label Text="WGU" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="Center" />
+        <Label Text="Keep the Course" 
+           HorizontalOptions="Center"
+           VerticalOptions="Center" />
     </StackLayout>
 
 </ContentPage>
