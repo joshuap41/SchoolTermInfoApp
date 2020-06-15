@@ -10,7 +10,10 @@ namespace SchoolTermInfoApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+
+            //Creates a navigation for use in iOS
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

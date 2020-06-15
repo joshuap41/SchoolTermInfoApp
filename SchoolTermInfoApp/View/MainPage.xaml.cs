@@ -17,5 +17,10 @@ namespace SchoolTermInfoApp
         {
             InitializeComponent();
         }
+
+        private void CreateNewTerm_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreateNewTerm());
+        }
     }
 }

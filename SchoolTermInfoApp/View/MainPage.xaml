@@ -14,6 +14,13 @@
         <Label Text="Keep the Course" 
            HorizontalOptions="Center"
            VerticalOptions="Center" />
+        <Button 
+            x:Name="CreateNewTerm"
+            Margin="0, 0, 0, 30"
+            Text="Add New Term"
+            Clicked="CreateNewTerm_Clicked" 
+            
+            TextColor="White"/>
     </StackLayout>
 
 </ContentPage>
