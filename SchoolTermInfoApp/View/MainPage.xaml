@@ -6,21 +6,24 @@
              mc:Ignorable="d"
              x:Class="SchoolTermInfoApp.MainPage">
 
+    
     <StackLayout>
         <!-- Place new controls here -->
         <Label Text="WGU" 
            HorizontalOptions="Center"
            VerticalOptions="Center" />
+        
         <Label Text="Keep the Course" 
            HorizontalOptions="Center"
            VerticalOptions="Center" />
+        
         <Button 
             x:Name="CreateNewTerm"
             Margin="0, 0, 0, 30"
             Text="Add New Term"
             Clicked="CreateNewTerm_Clicked" 
-            
-            TextColor="White"/>
+            BackgroundColor="{StaticResource blueColorForButton}"
+            TextColor="{StaticResource white}"/>
     </StackLayout>
 
 </ContentPage>
