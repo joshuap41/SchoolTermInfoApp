@@ -32,14 +32,15 @@
         </StackLayout>
 
         <StackLayout VerticalOptions="CenterAndExpand" x:Name="CreatedTerms">
-            <ListView x:Name="TermListView">
+            <ListView x:Name="termListView"
+                      ItemSelected="TermListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell IsEnabled="True">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                <Label Text="{Binding Title}" VerticalOptions="Center" TextColor="Blue" />
+                                <Label Text="{Binding TermName}" VerticalOptions="Center" TextColor="Blue" />
                                 <Label Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}'}"  VerticalOptions="Center"/>
-                                <Label Text="{Binding EndDate, StringFormat='{}{0:MM/dd/yyyy}'}" VerticalOptions="Center"/>
+                                <Label Text="{Binding FinishDate, StringFormat='{}{0:MM/dd/yyyy}'}" VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -59,7 +60,6 @@
                 Clicked="CreateNewTerm_Clicked" 
                 BackgroundColor="{StaticResource blueColorForButton}"
                 TextColor="{StaticResource white}"/>
-
         </StackLayout>
 
     </StackLayout>

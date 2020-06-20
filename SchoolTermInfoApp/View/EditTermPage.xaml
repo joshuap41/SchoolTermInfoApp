@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolTermInfoApp.View.EditTermPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Edit Term"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <TableView>
+                <TableSection>
+                    <EntryCell x:Name="termName"
+                               Label="Term Name:"/>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label Text="Start Date:"
+                                   Padding="0,10,10,0"/>
+                            <DatePicker x:Name="startDate"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label Text="Finish Date:"
+                                   Padding="0,10,4,0"/>
+                            <DatePicker x:Name="finishDate"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                </TableSection>
+            </TableView>
+
+            <!--Work on the layout padding Etc.-->
+            <Button 
+                x:Name="updateButton"
+                Margin="0, 0, 0, 30"
+                Text="Update Term"
+                Clicked="UpdateButton_Clicked"
+                BackgroundColor="{StaticResource blueColorForButton}"
+                TextColor="{StaticResource white}"/>
+            <Button 
+                x:Name="deleteButton"
+                Margin="0, 0, 0, 30"
+                Text="Delete Term"
+                Clicked="DeleteButton_Clicked" 
+                BackgroundColor="{StaticResource blueColorForButton}"
+                TextColor="{StaticResource white}"/>
+
+        </StackLayout>
+
+
+    </ContentPage.Content>
+
+</ContentPage>

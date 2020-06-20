@@ -44,7 +44,9 @@ namespace SchoolTermInfoApp
                 }
 
                 //Make sure that the finish date is greater than the start date
+
                 //Check for nulls with the name and display an alert if it is bad
+
                 //if(createTerm.StartDate < createTerm.FinishDate)
 
             }

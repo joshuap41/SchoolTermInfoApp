@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using SQLite;
 using SchoolTermInfoApp.Model;
+using SchoolTermInfoApp.View;
 
 namespace SchoolTermInfoApp
 {
@@ -28,13 +29,26 @@ namespace SchoolTermInfoApp
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             { 
                 conn.CreateTable<Term>();
-                var posts = conn.Table<Term>().ToList();
+                var terms = conn.Table<Term>().ToList();
+                termListView.ItemsSource = terms;
             }
         }
 
         private void CreateNewTerm_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new CreateNewTerm());
+        }
+
+        void TermListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            //casting usign the "as"
+            var selectedTerm = termListView.SelectedItem as Term;
+
+            if (selectedTerm != null)
+            {
+                Navigation.PushAsync(new EditTermPage(selectedTerm));
+            }
+
         }
     }
 }
