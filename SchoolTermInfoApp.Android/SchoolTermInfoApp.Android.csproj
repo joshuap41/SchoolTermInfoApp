@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -90,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchoolTermInfoApp\SchoolTermInfoApp.csproj">
-      <Project>{8DDCBCF0-1CC4-467F-A815-03EDC11D229E}</Project>
+      <Project>{F87A3162-ECA4-4347-AD8B-73F06916EF53}</Project>
       <Name>SchoolTermInfoApp</Name>
     </ProjectReference>
   </ItemGroup>

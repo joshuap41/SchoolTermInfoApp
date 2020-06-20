@@ -10,16 +10,46 @@
     <!--Might Change this to display the page name within the page and not the toolbar-->
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            Text="Create New Term"
-            />
+            Text="Save"
+            Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
     
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Create New Term Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Create New Term"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <TableView>
+                <TableSection>
+                    <EntryCell x:Name="termName"
+                               Placeholder="..."
+                               Label="Term Name:"/>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label Text="Start Date:"
+                                   Padding="0,10,10,0"/>
+                            <DatePicker x:Name="startDate"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label Text="Finish Date:"
+                                   Padding="0,10,4,0"/>
+                            <DatePicker x:Name="finishDate"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                </TableSection>
+            </TableView>
+
         </StackLayout>
+
+
     </ContentPage.Content>
 </ContentPage>
