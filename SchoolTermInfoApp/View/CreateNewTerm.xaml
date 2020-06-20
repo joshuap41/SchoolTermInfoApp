@@ -11,9 +11,11 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Text="Save"
-            Clicked="ToolbarItem_Clicked"/>
+            Clicked="ToolbarItem_Clicked"
+            />
     </ContentPage.ToolbarItems>
-    
+
+
     
     <ContentPage.Content>
         <StackLayout>
