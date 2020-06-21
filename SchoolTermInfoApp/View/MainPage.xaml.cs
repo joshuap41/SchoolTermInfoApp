@@ -16,6 +16,8 @@ namespace SchoolTermInfoApp
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        public static string SelectedTerm = string.Empty;
+
         public MainPage()
         {
             InitializeComponent();
@@ -43,6 +45,8 @@ namespace SchoolTermInfoApp
         {
             //casting usign the "as"
             var selectedTerm = termListView.SelectedItem as Term;
+
+            Convert.To SelectedTerm = selectedTerm;
 
             if (selectedTerm != null)
             {

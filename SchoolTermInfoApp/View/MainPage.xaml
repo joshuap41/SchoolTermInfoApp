@@ -32,6 +32,9 @@
         </StackLayout>
 
         <StackLayout VerticalOptions="CenterAndExpand" x:Name="CreatedTerms">
+
+
+            <!--Need to save "ItemSelected" to use later in the "termPage" Q for the teacher??-->
             <ListView x:Name="termListView"
                       ItemSelected="TermListView_ItemSelected">
                 <ListView.ItemTemplate>
@@ -56,7 +59,7 @@
             <Button 
                 x:Name="CreateNewTerm"
                 Margin="0, 0, 0, 30"
-                Text="Add New Term"
+                Text="Create New Term"
                 Clicked="CreateNewTerm_Clicked" 
                 BackgroundColor="{StaticResource blueColorForButton}"
                 TextColor="{StaticResource white}"/>

@@ -41,7 +41,7 @@
                                      Padding="12, 5" >
                             <Label Text="Course Status:"
                                    VerticalOptions="Center"/>
-                            <Picker x:Name="CourseStatus"
+                            <Picker x:Name="courseStatus"
                                     Title="Status...">
                                 <Picker.Items>
                                     <x:String>Future</x:String>

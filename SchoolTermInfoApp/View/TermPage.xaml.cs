@@ -29,12 +29,17 @@ namespace SchoolTermInfoApp.View
 
         void CreateNewCourse_Clicked(System.Object sender, System.EventArgs e)
         {
-           //need to build this first
+            Navigation.PushAsync(new CreateNewCoursePage());
         }
 
         void CourseListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
             //this is for the edit course page
+        }
+
+        void EditTerm_Clicked(System.Object sender, System.EventArgs e)
+        {
+            //Navigation.PushAsync(new EditTermPage());
         }
     }
 }
