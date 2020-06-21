@@ -16,8 +16,6 @@
     </ContentPage.ToolbarItems>
 
 
-
-    
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Create New Term"

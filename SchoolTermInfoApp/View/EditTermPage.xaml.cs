@@ -10,6 +10,9 @@ namespace SchoolTermInfoApp.View
     {
         Term selectedTerm;
 
+        //need to update the parameter for the constructor. it is currently setup for editing a term from the homepage
+        //add a button from the term page to update and delete maybe???
+
         public EditTermPage(Term selectedTerm)
         {
             InitializeComponent();

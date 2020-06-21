@@ -46,7 +46,7 @@ namespace SchoolTermInfoApp
 
             if (selectedTerm != null)
             {
-                Navigation.PushAsync(new EditTermPage(selectedTerm));
+                Navigation.PushAsync(new TermPage(selectedTerm));
             }
 
         }

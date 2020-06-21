@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolTermInfoApp.View.CreateNewCoursePage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Save"
+            Clicked="ToolbarItem_Clicked"
+            />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Create New Course"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <TableView>
+                <TableSection>
+                    <EntryCell x:Name="courseName"
+                               Placeholder="..."
+                               Label="Course Name:"/>
+
+                    <EntryCell x:Name="mentorName"
+                               Placeholder="..."
+                               Label="Mentor Name:"/>
+                    
+                    <EntryCell x:Name="mentorPhoneNumber"
+                               Placeholder="..."
+                               Label="Mentor Phone Number:"/>
+                    
+                    <EntryCell x:Name="mentorEmail"
+                               Placeholder="..."
+                               Label="Mentor Email:"/>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="12, 5" >
+                            <Label Text="Course Status:"
+                                   VerticalOptions="Center"/>
+                            <Picker x:Name="CourseStatus"
+                                    Title="Status...">
+                                <Picker.Items>
+                                    <x:String>Future</x:String>
+                                    <x:String>Active</x:String>
+                                    <x:String>Complete</x:String>
+                                    <x:String>Terminated</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label Text="Start Date:"
+                                   Padding="0,10,10,0"/>
+                            <DatePicker x:Name="startDate"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label Text="Finish Date:"
+                                   Padding="0,10,4,0"/>
+                            <DatePicker x:Name="finishDate"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <EntryCell x:Name="courseNotes"
+                               Placeholder="..."
+                               Label="Course Notes:"/>
+
+                </TableSection>
+            </TableView>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
