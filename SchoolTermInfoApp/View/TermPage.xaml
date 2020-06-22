@@ -6,7 +6,7 @@
     <StackLayout>
 
         <StackLayout>
-            <!-- Place new controls here -->
+            <!-- Add specific term information to the header of this page -->
             <Label Text="Term Courses"
                    FontSize="Title"
                    FontAttributes="Bold"
@@ -21,7 +21,7 @@
                    />
         </StackLayout>
 
-        <!--Should I add anything else to this view?????-->
+        
         <StackLayout VerticalOptions="CenterAndExpand" x:Name="CreatedCourses">
             <ListView x:Name="courseListView"
                       ItemSelected="CourseListView_ItemSelected">
@@ -30,7 +30,7 @@
                         <ViewCell IsEnabled="True">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                 <Label Text="{Binding CourseName}" VerticalOptions="Center" TextColor="Blue" />
-                                <Label Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}'}"  VerticalOptions="Center"/>
+                                <Label Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}  -'}"  VerticalOptions="Center"/>
                                 <Label Text="{Binding FinishDate, StringFormat='{}{0:MM/dd/yyyy}'}" VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
@@ -42,7 +42,7 @@
 
 
 
-        <!--Need this to be under the terms-->
+        <!--Create new course needs to keep the courses with the specific term-->
         <StackLayout>
             <Button 
                 x:Name="CreateNewCourse"

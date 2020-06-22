@@ -16,6 +16,7 @@ namespace SchoolTermInfoApp
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+
         public static string SelectedTerm = string.Empty;
 
         public MainPage()
@@ -36,10 +37,8 @@ namespace SchoolTermInfoApp
             }
         }
 
-        private void CreateNewTerm_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new CreateNewTerm());
-        }
+
+
 
         //used to track the selected term.
         void TermListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
@@ -47,14 +46,26 @@ namespace SchoolTermInfoApp
             //casting usign the "as"
             var selectedTerm = termListView.SelectedItem as Term;
 
+            //sets the class member
             var SelectedTerm = selectedTerm;
 
             if (selectedTerm != null)
             {
-                
                 Navigation.PushAsync(new TermPage(selectedTerm));
             }
 
+        }
+
+
+
+
+
+
+
+
+        private void CreateNewTerm_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreateNewTerm());
         }
     }
 }

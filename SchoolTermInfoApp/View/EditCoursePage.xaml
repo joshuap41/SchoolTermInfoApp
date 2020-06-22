@@ -1,18 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SchoolTermInfoApp.View.CreateNewCoursePage">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem
-            Text="Save"
-            Clicked="ToolbarItem_Clicked"
-            />
-    </ContentPage.ToolbarItems>
+             x:Class="SchoolTermInfoApp.View.EditCoursePage">
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Create New Course"
+            <Label Text="Edit Course"
                    FontSize="Title"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
@@ -80,5 +73,4 @@
 
         </StackLayout>
     </ContentPage.Content>
-
 </ContentPage>

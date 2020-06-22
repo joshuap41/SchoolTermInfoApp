@@ -58,9 +58,9 @@ namespace SchoolTermInfoApp.View
                 //Check for nulls with the name and display an alert if it is bad
 
                 //if(createTerm.StartDate < createTerm.FinishDate)
-
+                
             }
-           // Navigation.PushAsync(new TermPage(selectedTerm));
+            Navigation.PushAsync(new TermPage(currentTermType));
         }
     }
 }
