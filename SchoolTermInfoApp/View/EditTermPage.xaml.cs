@@ -42,6 +42,7 @@ namespace SchoolTermInfoApp.View
                 else
                     DisplayAlert("Failure", "Term failed to update", "Ok");
             }
+            Navigation.PushAsync(new MainPage());
 
         }
 
@@ -57,7 +58,7 @@ namespace SchoolTermInfoApp.View
                 else
                     DisplayAlert("Failure", "Term failed to delete", "Ok");
             }
-
+            Navigation.PushAsync(new MainPage());
         }
     }
 }

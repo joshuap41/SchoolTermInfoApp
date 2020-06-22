@@ -9,9 +9,13 @@ namespace SchoolTermInfoApp.View
 {
     public partial class CreateNewCoursePage : ContentPage
     {
-        public CreateNewCoursePage()
+        private Term currentTermType;
+
+        public CreateNewCoursePage(Term currentTerm)
         {
             InitializeComponent();
+
+            currentTermType = currentTerm;
         }
 
         void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
@@ -20,13 +24,15 @@ namespace SchoolTermInfoApp.View
             {
                 CourseName = courseName.Text,
                 MentorName = mentorName.Text,
-                MentorPhoneNumber = mentorPhoneNumber.Text(),
+                MentorPhoneNumber = mentorPhoneNumber.Text,
                 MentorEmail = mentorEmail.Text,
-                CourseStatus = courseStatus.ToString(),
+                CourseStatus = Convert.ToString(courseStatus.SelectedItem),
                 StartDate = startDate.Date,
                 FinishDate = finishDate.Date,
                 CourseNotes = courseNotes.Text,
-                //CourseNotifications =
+                //working on this...
+                TermNumber = currentTermType.Id
+                //notifications here?
             };
 
 
@@ -54,7 +60,7 @@ namespace SchoolTermInfoApp.View
                 //if(createTerm.StartDate < createTerm.FinishDate)
 
             }
-            Navigation.PushAsync(new TermPage());
+           // Navigation.PushAsync(new TermPage(selectedTerm));
         }
     }
 }

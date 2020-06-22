@@ -41,15 +41,17 @@ namespace SchoolTermInfoApp
             Navigation.PushAsync(new CreateNewTerm());
         }
 
+        //used to track the selected term.
         void TermListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
             //casting usign the "as"
             var selectedTerm = termListView.SelectedItem as Term;
 
-            Convert.To SelectedTerm = selectedTerm;
+            var SelectedTerm = selectedTerm;
 
             if (selectedTerm != null)
             {
+                
                 Navigation.PushAsync(new TermPage(selectedTerm));
             }
 

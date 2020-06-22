@@ -10,9 +10,15 @@ namespace SchoolTermInfoApp.View
 {
     public partial class TermPage : ContentPage
     {
+        public static Term currentTerm;
+
         public TermPage(Term selectedTerm)
         {
             InitializeComponent();
+
+            currentTerm = selectedTerm;
+
+
         }
 
         protected override void OnAppearing()
@@ -27,19 +33,20 @@ namespace SchoolTermInfoApp.View
             }
         }
 
+
         void CreateNewCourse_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new CreateNewCoursePage());
+            //Navigation.PushAsync(new CreateNewCoursePage());
         }
 
         void CourseListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
-            //this is for the edit course page
+            //var selectedTerm = courseListView.SelectedItem as Term;
         }
 
         void EditTerm_Clicked(System.Object sender, System.EventArgs e)
         {
-            //Navigation.PushAsync(new EditTermPage());
+            Navigation.PushAsync(new EditTermPage(currentTerm));
         }
     }
 }
