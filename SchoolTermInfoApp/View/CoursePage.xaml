@@ -5,9 +5,14 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
+            Text="Home      "
+            
+            Clicked="HomeToolbarItem_Clicked"/>
+        
+        <ToolbarItem
             Text="Save"
-            Clicked="ToolbarItem_Clicked"
-            />
+            Clicked="ToolbarItem_Clicked"/>
+        
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

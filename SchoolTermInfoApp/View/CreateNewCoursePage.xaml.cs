@@ -30,7 +30,7 @@ namespace SchoolTermInfoApp.View
                 StartDate = startDate.Date,
                 FinishDate = finishDate.Date,
                 CourseNotes = courseNotes.Text,
-                //working on this...
+                //working on this... Need to delete after testing
                 TermNumber = currentTermType.Id
                 //notifications here?
             };
@@ -46,11 +46,11 @@ namespace SchoolTermInfoApp.View
 
                 if (rows > 0)
                 {
-                    DisplayAlert("Success", "New Term Added", "OK");
+                    DisplayAlert("Success", "New Course Added", "OK");
                 }
                 else
                 {
-                    DisplayAlert("Failure", "Term Failed to be Added", "OK");
+                    DisplayAlert("Failure", "Course Failed to be Added", "OK");
                 }
 
                 //Make sure that the finish date is greater than the start date

@@ -3,6 +3,7 @@ using SQLite;
 
 namespace SchoolTermInfoApp.Model
 {
+    [Table("Term")]
     public class Term
     {
         [PrimaryKey, AutoIncrement]

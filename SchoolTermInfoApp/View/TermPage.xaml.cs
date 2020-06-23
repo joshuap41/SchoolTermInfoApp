@@ -12,18 +12,22 @@ namespace SchoolTermInfoApp.View
 {
     public partial class TermPage : ContentPage
     {
-        //need to keep the members of the class private and access through properties, Etc.
-        private Term currentTerm;
-        private ObservableCollection<Course> listOfCourses;
+        //carrying the specific term from the MainPage ItemSelected event for the EditTermPage
+        Term currentTerm;
+        public Term SelectedTerm { get; set; }
+        //not quite sure what I was doing here...
+        //private ObservableCollection<Course> listOfCourses;
 
+        //keeping track of the course
+        public static string SelectedCourse = string.Empty;
 
         public TermPage(Term selectedTerm)
         {
             InitializeComponent();
 
+            //use current term to save courses to it??
             currentTerm = selectedTerm;
-
-
+            this.SelectedTerm = selectedTerm;
         }
 
 
@@ -60,16 +64,25 @@ namespace SchoolTermInfoApp.View
         }
 
 
+        //need to keep the courses in the right term...
         void CreateNewCourse_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new CreateNewCoursePage(currentTerm));
         }
 
 
-
+        //tracking the selected course
         void CourseListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
-            //var selectedTerm = courseListView.SelectedItem as Term;
+            var selectedCourse = courseListView.SelectedItem as Course;
+
+            //sets the class member
+            var SelectedCourse = selectedCourse;
+
+            if (selectedCourse != null)
+            {
+                Navigation.PushAsync(new CoursePage(selectedCourse, currentTerm));
+            }
         }
 
 
