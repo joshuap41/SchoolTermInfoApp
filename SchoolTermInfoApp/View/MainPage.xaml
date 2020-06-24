@@ -58,7 +58,8 @@
         <StackLayout>
             <Button 
                 x:Name="CreateNewTerm"
-                Margin="0, 0, 0, 30"
+                Margin="0, 0, 0, 20"
+                HeightRequest="35"
                 Text="Create New Term"
                 Clicked="CreateNewTerm_Clicked" 
                 BackgroundColor="{StaticResource blueColorForButton}"

@@ -5,19 +5,13 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            Text="Home      "
-            
+            Text="Home"
             Clicked="HomeToolbarItem_Clicked"/>
-        
-        <ToolbarItem
-            Text="Save"
-            Clicked="ToolbarItem_Clicked"/>
-        
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Course"
+            <Label Text="Course Details"
                    FontSize="Title"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
@@ -25,58 +19,89 @@
 
             <TableView>
                 <TableSection>
-                    <EntryCell x:Name="courseName"
-                               Placeholder="..."
-                               Label="Course Name:"/>
-
-                    <EntryCell x:Name="mentorName"
-                               Placeholder="..."
-                               Label="Mentor Name:"/>
-                    
-                    <EntryCell x:Name="mentorPhoneNumber"
-                               Placeholder="..."
-                               Label="Mentor Phone Number:"/>
-                    
-                    <EntryCell x:Name="mentorEmail"
-                               Placeholder="..."
-                               Label="Mentor Email:"/>
 
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal"
-                                     Padding="12, 5" >
-                            <Label Text="Course Status:"
-                                   VerticalOptions="Center"/>
-                            <Picker x:Name="courseStatus"
-                                    Title="Status...">
-                                <Picker.Items>
-                                    <x:String>Future</x:String>
-                                    <x:String>Active</x:String>
-                                    <x:String>Complete</x:String>
-                                    <x:String>Terminated</x:String>
-                                </Picker.Items>
-                            </Picker>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Course Name:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="courseName"
+                                   Padding="0,3,0,0"/>
                         </StackLayout>
                     </ViewCell>
 
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="13,0">
-                            <Label Text="Start Date:"
-                                   Padding="0,10,10,0"/>
-                            <DatePicker x:Name="startDate"/>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Mentor Name:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="mentorName"
+                                   Padding="0,3,0,0"/>
                         </StackLayout>
                     </ViewCell>
 
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="13,0">
-                            <Label Text="Finish Date:"
-                                   Padding="0,10,4,0"/>
-                            <DatePicker x:Name="finishDate"/>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Mentor Phone Number:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="mentorPhoneNumber"
+                                   Padding="0,3,0,0"
+                                   />
                         </StackLayout>
                     </ViewCell>
 
-                    <EntryCell x:Name="courseNotes"
-                               Placeholder="..."
-                               Label="Course Notes:"/>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Mentor Email:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="mentorEmail"
+                                   VerticalOptions="Center"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Course Status:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="courseStatus"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Start Date:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="startDate"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Finish Date:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="finishDate"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Course Notes:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="courseNotes"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
 
                     <!--Need to add Notifications here somehow-->
 
@@ -85,29 +110,29 @@
 
             <StackLayout>
 
-            <Button 
-                x:Name="requiredAssessments"
-                Margin="0, 0, 0, 0"
-                Text="Required Assessments"
-                Clicked="RequiredAssessments_Clicked"
-                BackgroundColor="{StaticResource blueColorForButton}"
-                TextColor="{StaticResource white}"/>
+            <Button x:Name="requiredAssessments"
+                    Margin="0, 0, 0, 0"
+                    HeightRequest="35"
+                    Text="Required Assessments"
+                    Clicked="RequiredAssessments_Clicked"
+                    BackgroundColor="{StaticResource blueColorForButton}"
+                    TextColor="{StaticResource white}"/>
 
-            <Button 
-                x:Name="editCourse"
-                Margin="0, 0, 0, 0"
-                Text="Edit Course"
-                Clicked="EditCourse_Clicked"
-                BackgroundColor="{StaticResource blueColorForButton}"
-                TextColor="{StaticResource white}"/>
+            <Button x:Name="editCourse"
+                    Margin="0, 0, 0, 0"
+                    HeightRequest="35"
+                    Text="Edit Course"
+                    Clicked="EditCourse_Clicked"
+                    BackgroundColor="{StaticResource blueColorForButton}"
+                    TextColor="{StaticResource white}"/>
 
-            <Button 
-                x:Name="deleteCourse"
-                Margin="0, 0, 0, 30"
-                Text="Delete Course"
-                Clicked="DeleteCourse_Clicked"
-                BackgroundColor="{StaticResource blueColorForButton}"
-                TextColor="{StaticResource white}"/>
+            <Button x:Name="deleteCourse"
+                    Margin="0, 0, 0, 20"
+                    HeightRequest="35"
+                    Text="Delete Course"
+                    Clicked="DeleteCourse_Clicked"
+                    BackgroundColor="{StaticResource blueColorForButton}"
+                    TextColor="{StaticResource white}"/>
         </StackLayout>
         </StackLayout>
 

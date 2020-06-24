@@ -15,6 +15,7 @@ namespace SchoolTermInfoApp.View
         private Course selectedCourse;
         private Term currentTerm;
 
+        private string dateFormat = " MM/dd/yyyy";
 
         public CoursePage(Course selectedCourse, Term currentTerm)
         {
@@ -23,16 +24,14 @@ namespace SchoolTermInfoApp.View
             this.selectedCourse = selectedCourse;
             this.currentTerm = currentTerm;
 
-            
 
             courseName.Text = selectedCourse.CourseName;
             mentorName.Text = selectedCourse.MentorName;
             mentorPhoneNumber.Text = selectedCourse.MentorPhoneNumber;
             mentorEmail.Text = selectedCourse.MentorEmail;
-            //convert.tostring() maybe
-            courseStatus.SelectedItem = selectedCourse.CourseStatus;
-            startDate.Date = selectedCourse.StartDate;
-            finishDate.Date = selectedCourse.FinishDate;
+            courseStatus.Text = selectedCourse.CourseStatus;
+            startDate.Text = selectedCourse.StartDate.ToString(dateFormat);
+            finishDate.Text = selectedCourse.FinishDate.ToString(dateFormat);
             courseNotes.Text = selectedCourse.CourseNotes;
             //notifications here or in the edit???
         }
@@ -62,9 +61,11 @@ namespace SchoolTermInfoApp.View
         {
         }
 
+
+        //not being used
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-
+        
         }
 
         private void HomeToolbarItem_Clicked(object sender, EventArgs e)
