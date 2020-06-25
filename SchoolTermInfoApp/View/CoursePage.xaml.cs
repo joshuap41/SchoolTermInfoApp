@@ -24,7 +24,7 @@ namespace SchoolTermInfoApp.View
             this.selectedCourse = selectedCourse;
             this.currentTerm = currentTerm;
 
-
+            //change to binding in the UI
             courseName.Text = selectedCourse.CourseName;
             mentorName.Text = selectedCourse.MentorName;
             mentorPhoneNumber.Text = selectedCourse.MentorPhoneNumber;
@@ -35,9 +35,14 @@ namespace SchoolTermInfoApp.View
             courseNotes.Text = selectedCourse.CourseNotes;
             //notifications here or in the edit???
         }
-        
+
+        void RequiredAssessments_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
+
         void EditCourse_Clicked(System.Object sender, System.EventArgs e)
         {
+            Navigation.PushAsync(new EditCoursePage(selectedCourse, currentTerm));
         }
 
         void DeleteCourse_Clicked(System.Object sender, System.EventArgs e)
@@ -57,16 +62,14 @@ namespace SchoolTermInfoApp.View
             Navigation.PushAsync(new TermPage(currentTerm));
         }
 
-        void RequiredAssessments_Clicked(System.Object sender, System.EventArgs e)
-        {
-        }
+       
 
 
-        //not being used
-        private void ToolbarItem_Clicked(object sender, EventArgs e)
-        {
+        //the old save button
+        //private void ToolbarItem_Clicked(object sender, EventArgs e)
+        //{
         
-        }
+        //}
 
         private void HomeToolbarItem_Clicked(object sender, EventArgs e)
         {

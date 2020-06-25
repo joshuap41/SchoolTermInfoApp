@@ -12,26 +12,17 @@ namespace SchoolTermInfoApp.View
 {
     public partial class TermPage : ContentPage
     {
-        //carrying the specific term from the MainPage ItemSelected event for the EditTermPage
-        Term currentTerm;
-        public Term SelectedTerm { get; set; }
-        //not quite sure what I was doing here...
-        //private ObservableCollection<Course> listOfCourses;
+        Term selectedTerm;
 
-        //keeping track of the course
-        public static string SelectedCourse = string.Empty;
+       // private ObservableCollection<Course> _listOfCourses;
 
         public TermPage(Term selectedTerm)
         {
             InitializeComponent();
 
-            //use current term to save courses to it??
-            currentTerm = selectedTerm;
-            this.SelectedTerm = selectedTerm;
+            this.selectedTerm = selectedTerm;
         }
 
-
-        //CreateNewCoursePage is working but not appearing...
 
         protected override void OnAppearing()
         {
@@ -41,47 +32,48 @@ namespace SchoolTermInfoApp.View
 
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
-                conn.CreateTable<Course>();
+                 conn.CreateTable<Course>();
 
-                //replace "TermNumber" with ID
-                var listOfCourses = conn.Query<Course>($"SELECT * FROM Course WHERE Id = '{currentTerm}'");
+                //not getting the course that was just created...n Count 0 here
 
-                listOfCourses = conn.Table<Course>().ToList();
-                courseListView.ItemsSource = listOfCourses;
+                //var query = $"SELECT * FROM Course WHERE Id = '{selectedTerm.Id}'";
+                //var listOfCourses = conn.Query<Course>(query);
+                //var rows = conn.Table<Course>().ToList();
 
-
-                //var courses = conn.Table<Course>().ToList();
                 //courseListView.ItemsSource = listOfCourses;
-            }
+                //not able to use await
+                //_listOfCourses = new ObservableCollection<Course>(listOfCourses);
+                //courseListView.ItemsSource = _listOfCourses;
 
-            //Not working
-            //using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            // {
-            //    conn.CreateTable<Course>();
-            //    var courses = conn.Table<Course>().ToList();
-            //    courseListView.ItemsSource = courses;
-            //}
+                //displays all courses in every term
+                var course = conn.Table<Course>().ToList();
+                courseListView.ItemsSource = course;
+
+
+
+
+
+
+
+            }
         }
 
 
         //need to keep the courses in the right term...
         void CreateNewCourse_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new CreateNewCoursePage(currentTerm));
+            Navigation.PushAsync(new CreateNewCoursePage(selectedTerm));
         }
 
 
-        //tracking the selected course
         void CourseListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
             var selectedCourse = courseListView.SelectedItem as Course;
 
-            //sets the class member
-            var SelectedCourse = selectedCourse;
 
             if (selectedCourse != null)
             {
-                Navigation.PushAsync(new CoursePage(selectedCourse, currentTerm));
+                Navigation.PushAsync(new CoursePage(selectedCourse, selectedTerm));
             }
         }
 
@@ -89,7 +81,12 @@ namespace SchoolTermInfoApp.View
         
         void EditTerm_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new EditTermPage(currentTerm));
+            Navigation.PushAsync(new EditTermPage(selectedTerm));
+        }
+
+        private void HomeButtonToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
         }
     }
 }

@@ -14,17 +14,19 @@ namespace SchoolTermInfoApp
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
+
+
     public partial class MainPage : ContentPage
     {
 
-        public static string SelectedTerm = string.Empty;
+        //public static string SelectedTerm = string.Empty;
 
         public MainPage()
         {
             InitializeComponent();
         }
 
-        //This method updates the page with the most recent db entry.
+        
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -45,9 +47,6 @@ namespace SchoolTermInfoApp
         {
             //casting usign the "as"
             var selectedTerm = termListView.SelectedItem as Term;
-
-            //sets the class member
-            var SelectedTerm = selectedTerm;
 
             if (selectedTerm != null)
             {

@@ -73,6 +73,11 @@
                                Placeholder="..."
                                Label="Course Notes:"/>
 
+                    <SwitchCell x:Name="courseNotifications"
+                                Text="Notificaitons:"
+                                IsEnabled="False"
+                                OnColor="AliceBlue"/>
+
                     <!--Need to add Notifications here somehow-->
 
                 </TableSection>

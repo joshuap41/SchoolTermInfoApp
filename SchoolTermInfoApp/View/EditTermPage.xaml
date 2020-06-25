@@ -3,6 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SchoolTermInfoApp.View.EditTermPage">
 
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Home     "
+                     Clicked="HomeButtonToolbarItem_Clicked"/>
+
+        <ToolbarItem Text="Save"
+                     Clicked="SaveButtonToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Edit Term"
@@ -35,15 +44,16 @@
                 </TableSection>
             </TableView>
 
-            <!--Work on the layout padding Etc.-->
-            <Button 
+            <!--Delete this when finished-->
+            <!--<Button 
                 x:Name="updateButton"
                 Margin="0, 0, 0, 20"
                 HeightRequest="35"
                 Text="Update Term"
                 Clicked="UpdateButton_Clicked"
                 BackgroundColor="{StaticResource blueColorForButton}"
-                TextColor="{StaticResource white}"/>
+                TextColor="{StaticResource white}"/>-->
+            
             <Button 
                 x:Name="deleteButton"
                 Margin="0, 0, 0, 20"

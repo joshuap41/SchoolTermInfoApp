@@ -9,13 +9,13 @@ namespace SchoolTermInfoApp.View
 {
     public partial class CreateNewCoursePage : ContentPage
     {
-        private Term currentTermType;
+        private Term selectedTerm;
 
-        public CreateNewCoursePage(Term currentTerm)
+        public CreateNewCoursePage(Term selectedTerm)
         {
             InitializeComponent();
 
-            currentTermType = currentTerm;
+            this.selectedTerm = selectedTerm;
         }
 
         void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
@@ -30,13 +30,10 @@ namespace SchoolTermInfoApp.View
                 StartDate = startDate.Date,
                 FinishDate = finishDate.Date,
                 CourseNotes = courseNotes.Text,
-                //working on this... Need to delete after testing
-                TermNumber = currentTermType.Id
-                //notifications here?
+                TermNumber = selectedTerm.Id,
+                CourseNotifications = courseNotifications.
             };
 
-
-            //****************have not tested this yet*******************
              
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
@@ -60,7 +57,7 @@ namespace SchoolTermInfoApp.View
                 //if(createTerm.StartDate < createTerm.FinishDate)
                 
             }
-            Navigation.PushAsync(new TermPage(currentTermType));
+            Navigation.PushAsync(new TermPage(selectedTerm));
         }
     }
 }

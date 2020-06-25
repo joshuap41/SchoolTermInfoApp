@@ -25,6 +25,7 @@ namespace SchoolTermInfoApp.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Plugin.LocalNotifications.Resource.Drawable.plugin_lc_smallicon = global::SchoolTermInfoApp.Droid.Resource.Drawable.plugin_lc_smallicon;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::SchoolTermInfoApp.Droid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::SchoolTermInfoApp.Droid.Resource.Attribute.coordinatorLayoutStyle;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::SchoolTermInfoApp.Droid.Resource.Attribute.font;
@@ -8351,10 +8352,13 @@ namespace SchoolTermInfoApp.Droid
 			public const int notify_panel_notification_icon_bg = 2131165299;
 			
 			// aapt resource value: 0x7F070074
-			public const int tooltip_frame_dark = 2131165300;
+			public const int plugin_lc_smallicon = 2131165300;
 			
 			// aapt resource value: 0x7F070075
-			public const int tooltip_frame_light = 2131165301;
+			public const int tooltip_frame_dark = 2131165301;
+			
+			// aapt resource value: 0x7F070076
+			public const int tooltip_frame_light = 2131165302;
 			
 			static Drawable()
 			{
