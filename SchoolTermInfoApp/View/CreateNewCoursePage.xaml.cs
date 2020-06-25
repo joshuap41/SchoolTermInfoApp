@@ -31,7 +31,7 @@ namespace SchoolTermInfoApp.View
                 FinishDate = finishDate.Date,
                 CourseNotes = courseNotes.Text,
                 TermNumber = selectedTerm.Id,
-                CourseNotifications = courseNotifications.
+                CourseNotificationsOn = courseNotifications.On == true ? 1:0
             };
 
              

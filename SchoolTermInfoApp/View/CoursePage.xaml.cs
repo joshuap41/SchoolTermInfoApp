@@ -33,7 +33,8 @@ namespace SchoolTermInfoApp.View
             startDate.Text = selectedCourse.StartDate.ToString(dateFormat);
             finishDate.Text = selectedCourse.FinishDate.ToString(dateFormat);
             courseNotes.Text = selectedCourse.CourseNotes;
-            //notifications here or in the edit???
+            //change this around to look better with the switch
+            courseNotifications.Text = selectedCourse.CourseNotificationsOn == 1 ? "Enabled" : "Disabled";
         }
 
         void RequiredAssessments_Clicked(System.Object sender, System.EventArgs e)

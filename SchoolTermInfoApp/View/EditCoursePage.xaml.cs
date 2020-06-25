@@ -28,7 +28,9 @@ namespace SchoolTermInfoApp.View
             startDate.Date = selectedCourse.StartDate;
             finishDate.Date = selectedCourse.FinishDate;
             courseNotes.Text = selectedCourse.CourseNotes;
-            //notifications here
+
+            //This shite doesn't work... duh... need to toggle the button
+            courseNotifications.Text = selectedCourse.CourseNotificationsOn == 1 ? "Enabled" : "Disabled";
         }
 
         
@@ -43,9 +45,16 @@ namespace SchoolTermInfoApp.View
             selectedCourse.StartDate = startDate.Date;
             selectedCourse.FinishDate = finishDate.Date;
             selectedCourse.CourseNotes = courseNotes.Text;
+            selectedCourse.CourseNotificationsOn = courseNotifications.On == true ? 1 : 0;
+                
+
+
+
+
+
             //notifications here
 
-            using(SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Course>();
                 int rows = conn.Update(selectedCourse);
