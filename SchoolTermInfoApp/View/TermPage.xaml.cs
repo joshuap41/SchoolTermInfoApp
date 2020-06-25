@@ -7,6 +7,7 @@ using SchoolTermInfoApp.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 
 namespace SchoolTermInfoApp.View
 {
@@ -14,7 +15,7 @@ namespace SchoolTermInfoApp.View
     {
         Term selectedTerm;
 
-       // private ObservableCollection<Course> _listOfCourses;
+       private ObservableCollection<Course> _listOfCourses;
 
         public TermPage(Term selectedTerm)
         {
@@ -28,29 +29,27 @@ namespace SchoolTermInfoApp.View
         {
             base.OnAppearing();
 
-            //add the specific term info here and display to the UI
-
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                  conn.CreateTable<Course>();
+                //displays all courses in every term
+                //var course = conn.Table<Course>().ToList();
+                //courseListView.ItemsSource = course;
+
 
                 //not getting the course that was just created...n Count 0 here
+                var query = $"SELECT * FROM Course WHERE Id = '{selectedTerm.Id}'";
+                var listOfCourses = conn.Query<Course>(query);
+                var rows = conn.Table<Course>().ToList();
+                courseListView.ItemsSource = listOfCourses;
 
+
+                //not able to use await?
                 //var query = $"SELECT * FROM Course WHERE Id = '{selectedTerm.Id}'";
-                //var listOfCourses = conn.Query<Course>(query);
-                //var rows = conn.Table<Course>().ToList();
+                //var listOfCourses = await conn.Query<Course>(query);
 
-                //courseListView.ItemsSource = listOfCourses;
-                //not able to use await
                 //_listOfCourses = new ObservableCollection<Course>(listOfCourses);
                 //courseListView.ItemsSource = _listOfCourses;
-
-                //displays all courses in every term
-                var course = conn.Table<Course>().ToList();
-                courseListView.ItemsSource = course;
-
-
-
 
 
 

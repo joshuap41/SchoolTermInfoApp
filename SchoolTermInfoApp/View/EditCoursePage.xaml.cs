@@ -47,12 +47,7 @@ namespace SchoolTermInfoApp.View
             selectedCourse.CourseNotes = courseNotes.Text;
             selectedCourse.CourseNotificationsOn = courseNotifications.On == true ? 1 : 0;
                 
-
-
-
-
-
-            //notifications here
+            
 
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
