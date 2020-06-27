@@ -16,6 +16,7 @@ namespace SchoolTermInfoApp.View
     public partial class TermPage : ContentPage
     {
         Term selectedTerm;
+        private int _selectedTermId;
 
        //private ObservableCollection<Course> _listOfCourses;
 
@@ -24,6 +25,8 @@ namespace SchoolTermInfoApp.View
             InitializeComponent();
 
             this.selectedTerm = selectedTerm;
+            _selectedTermId = this.selectedTerm.Id;
+
         }
 
 
@@ -34,20 +37,18 @@ namespace SchoolTermInfoApp.View
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 //displays all courses in every term
-                conn.CreateTable<Course>();
-                var course = conn.Table<Course>().ToList();
-
-                //use this count to regulate only 6 courses
-                var count = course.Count();
-
-                courseListView.ItemsSource = course;
+                //conn.CreateTable<Course>();
+                //var course = conn.Table<Course>().ToList();
+                //courseListView.ItemsSource = course;
 
 
                 //need to use linq to do this
-                //var courseTable = conn.Table<Course>().ToList();
+                conn.CreateTable<Course>();
+                var courseTable = conn.Table<Course>().ToList();
 
-                //var listOfCourses = (from c in courseTable
-                //                     where c.);
+                var listOfCourses = (from c in courseTable
+                                     orderby c.TermNumber
+                                     select c.CourseName).Distinct().ToList();
 
 
 
@@ -76,6 +77,7 @@ namespace SchoolTermInfoApp.View
         
         void CreateNewCourse_Clicked(System.Object sender, System.EventArgs e)
         {
+            //Requirements dictate only 6 courses per term (.Count()).
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Course>();

@@ -34,7 +34,7 @@
                     <DataTemplate>
                         <ViewCell IsEnabled="True">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                <Label Text="{Binding CourseName}" 
+                                <Label Text="{Binding CourseName}"
                                        VerticalOptions="Center" 
                                        TextColor="Blue" />
                                 <Label Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}  -'}"  
