@@ -20,24 +20,6 @@ namespace SchoolTermInfoApp.View
             this.selectedTerm = selectedTerm;
         }
 
-        //public int CountCheck(Term selectedTerm)
-        //{
-        //    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-        //    {
-        //        conn.CreateTable<Course>();
-        //        var courseTable = conn.Table<Course>().ToList();
-
-        //        var listOfCourses = (from course in courseTable
-        //                             where course.TermNumber == selectedTerm.Id
-        //                             select course).ToList();
-
-        //        var count = listOfCourses.Count();
-
-        //        return count;
-        //    }
-
-        //}
-
         //save button
         void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {

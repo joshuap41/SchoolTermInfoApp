@@ -13,7 +13,7 @@ namespace SchoolTermInfoApp.View
     {
         private Course selectedCourse;
         private Term currentTerm;
-        private string dateFormat = " MM/dd/yyyy";
+        
 
         public CoursePage(Course selectedCourse, Term currentTerm)
         {
@@ -28,8 +28,8 @@ namespace SchoolTermInfoApp.View
             mentorPhoneNumber.Text = selectedCourse.MentorPhoneNumber;
             mentorEmail.Text = selectedCourse.MentorEmail;
             courseStatus.Text = selectedCourse.CourseStatus;
-            startDate.Text = selectedCourse.StartDate.ToString(dateFormat);
-            finishDate.Text = selectedCourse.FinishDate.ToString(dateFormat);
+            startDate.Text = selectedCourse.StartDate.ToString(App.dateFormat);
+            finishDate.Text = selectedCourse.FinishDate.ToString(App.dateFormat);
             courseNotes.Text = selectedCourse.CourseNotes;
             //change this around to look better with the switch
             courseNotifications.Text = selectedCourse.CourseNotificationsOn == 1 ? "Enabled" : "Disabled";
@@ -37,7 +37,14 @@ namespace SchoolTermInfoApp.View
 
         void RequiredAssessments_Clicked(System.Object sender, System.EventArgs e)
         {
+            
         }
+
+
+
+
+
+
 
         void EditCourse_Clicked(System.Object sender, System.EventArgs e)
         {
@@ -46,8 +53,6 @@ namespace SchoolTermInfoApp.View
 
         void DeleteCourse_Clicked(System.Object sender, System.EventArgs e)
         {
-
-            
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Course>();
@@ -60,9 +65,6 @@ namespace SchoolTermInfoApp.View
             }
             Navigation.PushAsync(new TermPage(currentTerm));
         }
-
-       
-
 
         //the old save button
         //private void ToolbarItem_Clicked(object sender, EventArgs e)
