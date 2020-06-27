@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using SQLite;
-using SchoolTermInfoApp.Model;
 using SchoolTermInfoApp.View;
 
 namespace SchoolTermInfoApp.View
@@ -14,7 +13,6 @@ namespace SchoolTermInfoApp.View
     {
         private Course selectedCourse;
         private Term currentTerm;
-
         private string dateFormat = " MM/dd/yyyy";
 
         public CoursePage(Course selectedCourse, Term currentTerm)

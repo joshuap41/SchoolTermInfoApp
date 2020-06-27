@@ -1,6 +1,11 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SQLite;
+using SchoolTermInfoApp.Model;
+using SchoolTermInfoApp.View;
+using System.Linq;
+
 
 namespace SchoolTermInfoApp
 {
@@ -38,5 +43,26 @@ namespace SchoolTermInfoApp
         protected override void OnResume()
         {
         }
+
+
+        public static int CountCheck(Term selectedTerm)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<Course>();
+
+                var courseTable = conn.Table<Course>().ToList();
+
+                var listOfCourses = (from course in courseTable
+                                     where course.TermNumber == selectedTerm.Id
+                                     select course).ToList();
+
+                var count = listOfCourses.Count();
+
+                return count;
+            }
+
+        }
+
     }
 }

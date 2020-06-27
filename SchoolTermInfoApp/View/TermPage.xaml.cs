@@ -15,17 +15,17 @@ namespace SchoolTermInfoApp.View
 {
     public partial class TermPage : ContentPage
     {
-        Term selectedTerm;
-        private int _selectedTermId;
+        private Term selectedTerm;
+        //private int _selectedTermId;
 
-       //private ObservableCollection<Course> _listOfCourses;
 
         public TermPage(Term selectedTerm)
         {
             InitializeComponent();
 
+            //clean this up becuase I only need the term Id to pull from the TermNumber in the Course Table
             this.selectedTerm = selectedTerm;
-            _selectedTermId = this.selectedTerm.Id;
+            //_selectedTermId = this.selectedTerm.Id;
 
         }
 
@@ -36,66 +36,33 @@ namespace SchoolTermInfoApp.View
 
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
-                //displays all courses in every term
-                //conn.CreateTable<Course>();
-                //var course = conn.Table<Course>().ToList();
-                //courseListView.ItemsSource = course;
-
-
-                //need to use linq to do this
                 conn.CreateTable<Course>();
                 var courseTable = conn.Table<Course>().ToList();
 
-                var listOfCourses = (from c in courseTable
-                                     orderby c.TermNumber
-                                     select c.CourseName).Distinct().ToList();
+                var listOfCourses = (from course in courseTable
+                                     where course.TermNumber == selectedTerm.Id
+                                     select course).ToList();
 
-
-
-
-                //***not getting the course that was just created...n Count 0 here***
-                //var query = $"SELECT * FROM Course WHERE Id = '{selectedTerm.Id}'";
-                //var listOfCourses = conn.Query<Course>(query);
-                //var rows = conn.Table<Course>().ToList();
-                //courseListView.ItemsSource = listOfCourses;
-
-
-                //not able to use await? Need to setup the db different and change all.
-                //var query = $"SELECT * FROM Course WHERE Id = '{selectedTerm.Id}'";
-                //var listOfCourses = await conn.Query<Course>(query);
-
-                //_listOfCourses = new ObservableCollection<Course>(listOfCourses);
-                //courseListView.ItemsSource = _listOfCourses;
-
-
-
-
+                courseListView.ItemsSource = listOfCourses;
             }
         }
 
 
-        
+        //Need to fix back button to not return to the "CreateNewCourse" page and add more courses
         void CreateNewCourse_Clicked(System.Object sender, System.EventArgs e)
         {
-            //Requirements dictate only 6 courses per term (.Count()).
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                conn.CreateTable<Course>();
-                var course = conn.Table<Course>().ToList();
-                var count = course.Count();
+            int count = App.CountCheck(selectedTerm);
 
-                if (count <= 6)
-                    Navigation.PushAsync(new CreateNewCoursePage(selectedTerm));
-                else
-                    DisplayAlert("Error", "Only 6 courses are allowed in a single Term", "Ok");
-            } 
+            if (count <= 5)
+                Navigation.PushAsync(new CreateNewCoursePage(selectedTerm));
+            else
+                DisplayAlert("Failure", "Only 6 Courses Allowed Per Term", "OK");
         }
 
 
         void CourseListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
             var selectedCourse = courseListView.SelectedItem as Course;
-
 
             if (selectedCourse != null)
             {

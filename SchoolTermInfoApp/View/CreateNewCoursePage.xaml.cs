@@ -4,6 +4,8 @@ using SchoolTermInfoApp.Model;
 using SchoolTermInfoApp.View;
 using Xamarin.Forms;
 using SQLite;
+using System.Linq;
+
 
 namespace SchoolTermInfoApp.View
 {
@@ -18,6 +20,25 @@ namespace SchoolTermInfoApp.View
             this.selectedTerm = selectedTerm;
         }
 
+        //public int CountCheck(Term selectedTerm)
+        //{
+        //    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+        //    {
+        //        conn.CreateTable<Course>();
+        //        var courseTable = conn.Table<Course>().ToList();
+
+        //        var listOfCourses = (from course in courseTable
+        //                             where course.TermNumber == selectedTerm.Id
+        //                             select course).ToList();
+
+        //        var count = listOfCourses.Count();
+
+        //        return count;
+        //    }
+
+        //}
+
+        //save button
         void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {
             Course createCourse = new Course()
@@ -33,23 +54,26 @@ namespace SchoolTermInfoApp.View
                 TermNumber = selectedTerm.Id,
 
                 //change to mosh example Udemy
-                CourseNotificationsOn = courseNotifications.On == true ? 1:0
+                CourseNotificationsOn = courseNotifications.On == true ? 1 : 0
             };
 
-             
+
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Course>();
+
+                //checks courseList for selectedTerm
+                int count =  App.CountCheck(selectedTerm);
+
                 var rows = conn.Insert(createCourse);
 
-
-                if (rows > 0)
+                if (count <= 5 && rows > 0)
                 {
                     DisplayAlert("Success", "New Course Added", "OK");
                 }
                 else
                 {
-                    DisplayAlert("Failure", "Course Failed to be Added", "OK");
+                    DisplayAlert("Failure", "Only 6 Courses Allowed Per Term", "OK");
                 }
 
                 //Make sure that the finish date is greater than the start date
@@ -57,7 +81,6 @@ namespace SchoolTermInfoApp.View
                 //Check for nulls with the name and display an alert if it is bad
 
                 //if(createTerm.StartDate < createTerm.FinishDate)
-                
             }
             Navigation.PushAsync(new TermPage(selectedTerm));
         }
