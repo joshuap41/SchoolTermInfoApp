@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolTermInfoApp.View.RequiredAssessmentsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Home"
+                     Clicked="HomeButtonToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <StackLayout>
+            <Label Text="Required Assessments"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+
+            <Label Text="Created Assessments"
+                   FontSize="Subtitle"
+                   FontAttributes="Italic"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,10"/>
+
+            <ListView x:Name="assessmentsListView"
+                      ItemSelected="AssessmentsListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="True">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                <Label Text="{Binding AssessmentName}" VerticalOptions="Center" TextColor="Blue" />
+                                <Label Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}'}"  VerticalOptions="Center"/>
+                                <Label Text="{Binding FinishDate, StringFormat='{}{0:MM/dd/yyyy}'}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="CreateNewAssessment"
+                    Margin="0,0,0,20"
+                    HeightRequest="35"
+                    Text="Create New Assessment"
+                    Clicked="CreateNewAssessment_Clicked"
+                    BackgroundColor="{StaticResource blueColorForButton}"
+                    TextColor="{StaticResource white}"/>
+
+        </StackLayout>
+
+        
+
+
+    </ContentPage.Content>
+</ContentPage>

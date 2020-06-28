@@ -11,7 +11,7 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="5">
             <Label Text="Create New Course"
                    FontSize="Title"
                    FontAttributes="Bold"
@@ -37,8 +37,7 @@
                                Label="Mentor Email:"/>
 
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal"
-                                     Padding="12, 5" >
+                        <StackLayout Orientation="Horizontal" Padding="12, 5" >
                             <Label Text="Course Status:"
                                    VerticalOptions="Center"/>
                             <Picker x:Name="courseStatus"
@@ -77,11 +76,8 @@
                                 Text="Notificaiton Status:"
                                 OnColor="AliceBlue"/>
 
-                    <!--Need to add Notifications here somehow-->
-
                 </TableSection>
             </TableView>
-
         </StackLayout>
     </ContentPage.Content>
 

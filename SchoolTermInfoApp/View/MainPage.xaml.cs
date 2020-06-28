@@ -40,8 +40,6 @@ namespace SchoolTermInfoApp
         }
 
 
-
-
         //used to track the selected term.
         void TermListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
@@ -49,10 +47,7 @@ namespace SchoolTermInfoApp
             var selectedTerm = termListView.SelectedItem as Term;
 
             if (selectedTerm != null)
-            {
                 Navigation.PushAsync(new TermPage(selectedTerm));
-            }
-
         }
 
 

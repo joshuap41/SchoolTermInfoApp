@@ -37,15 +37,9 @@ namespace SchoolTermInfoApp.View
 
         void RequiredAssessments_Clicked(System.Object sender, System.EventArgs e)
         {
-            
+            Navigation.PushAsync(new RequiredAssessmentsPage(selectedCourse));
         }
-
-
-
-
-
-
-
+        
         void EditCourse_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new EditCoursePage(selectedCourse, currentTerm));

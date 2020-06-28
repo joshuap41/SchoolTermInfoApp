@@ -2,26 +2,22 @@
 using System.Collections.Generic;
 using SQLite;
 using SchoolTermInfoApp.Model;
-using SchoolTermInfoApp.View;
-
 
 using Xamarin.Forms;
 
 namespace SchoolTermInfoApp.View
 {
-    public partial class AssessmentPage : ContentPage
+    public partial class CreateNewAssessmentPage : ContentPage
     {
-        private Assessment selectedAssessment;
         private Course selectedCourse;
-
-        public AssessmentPage(Assessment selectedAssessment, Course selectedCourse)
+        public CreateNewAssessmentPage(Course selectedCourse)
         {
             InitializeComponent();
-
-            this.selectedAssessment = selectedAssessment;
             this.selectedCourse = selectedCourse;
         }
 
-
+        void SaveButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
     }
 }
