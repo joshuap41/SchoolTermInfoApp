@@ -15,7 +15,7 @@ namespace SchoolTermInfoApp.Model
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
         public string AssessmentType { get; set; }
-        public int NotificationsOn { get; set; }
+        public bool AssessmentNotificationsOn { get; set; }
 
 
     }

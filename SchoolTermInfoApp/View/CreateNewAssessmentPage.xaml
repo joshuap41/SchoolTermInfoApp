@@ -4,6 +4,8 @@
              x:Class="SchoolTermInfoApp.View.CreateNewAssessmentPage">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Home     "
+                     Clicked="HomeButtonToolbarItem_Clicked"/>
         <ToolbarItem Text="Save"
                      Clicked="SaveButtonToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
@@ -22,8 +24,9 @@
                                Placeholder="..."
                                Label="Assessment Name:"/>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="12,5">
-                            <Label Text="Assessment Type:"/>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label Text="Assessment Type:"
+                                   Padding="0,10,3,0"/>
                             <Picker x:Name="assessmentType"
                                     Title="Type?">
                                 <Picker.Items>
@@ -35,24 +38,31 @@
                     </ViewCell>
 
                     <ViewCell>
-                        <StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
                             <Label Text="Start Date:"
-                                   Padding="15,10,10,0"/>
+                                   Padding="0,10,10,0"/>
                             <DatePicker x:Name="startDate"/>
                         </StackLayout>
                     </ViewCell>
 
                     <ViewCell>
-                        <StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
                             <Label Text="Finish Date:"
-                                   Padding="15,10,4,0"/>
+                                   Padding="0,10,10,0"/>
                             <DatePicker x:Name="finishDate"/>
                         </StackLayout>
                     </ViewCell>
 
-                    <SwitchCell x:Name="courseNotifications"
-                                Text="Notification Status:"
-                                OnColor="AliceBlue"/>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label x:Name="assessmentNotification"
+                                   Text="Notification Status:"
+                                   Padding="0,10,100,0"/>
+                            <Switch x:Name="assessmentNotification1"
+                                    OnColor="AliceBlue"/>
+                        </StackLayout>
+                    </ViewCell>
+                    
 
                 </TableSection>
             </TableView>

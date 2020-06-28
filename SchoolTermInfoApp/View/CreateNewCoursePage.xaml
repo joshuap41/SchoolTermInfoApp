@@ -4,10 +4,10 @@
              x:Class="SchoolTermInfoApp.View.CreateNewCoursePage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem
-            Text="Save"
-            Clicked="ToolbarItem_Clicked"
-            />
+        <ToolbarItem Text="Home     "
+                     Clicked="HomeButtonToolbarItem_Clicked"/>
+        <ToolbarItem Text="Save"
+                     Clicked="SaveButtonToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -16,7 +16,7 @@
                    FontSize="Title"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+                   VerticalOptions="Center"/>
 
             <TableView>
                 <TableSection>

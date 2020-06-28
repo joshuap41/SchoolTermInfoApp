@@ -21,7 +21,7 @@ namespace SchoolTermInfoApp.View
         }
 
         //save button
-        void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
+        void SaveButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {
             Course createCourse = new Course()
             {
@@ -45,7 +45,7 @@ namespace SchoolTermInfoApp.View
                 conn.CreateTable<Course>();
 
                 //checks courseList for selectedTerm
-                int count =  App.CountCheck(selectedTerm);
+                int count =  App.CourseCountCheck(selectedTerm);
 
                 var rows = conn.Insert(createCourse);
 
@@ -65,6 +65,11 @@ namespace SchoolTermInfoApp.View
                 //if(createTerm.StartDate < createTerm.FinishDate)
             }
             Navigation.PushAsync(new TermPage(selectedTerm));
+        }
+
+        void HomeButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
         }
     }
 }

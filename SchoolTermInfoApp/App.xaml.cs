@@ -47,7 +47,7 @@ namespace SchoolTermInfoApp
         }
 
 
-        public static int CountCheck(Term selectedTerm)
+        public static int CourseCountCheck(Term selectedTerm)
         {
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
@@ -55,6 +55,7 @@ namespace SchoolTermInfoApp
 
                 var courseTable = conn.Table<Course>().ToList();
 
+                //gets courses for each term
                 var listOfCourses = (from course in courseTable
                                      where course.TermNumber == selectedTerm.Id
                                      select course).ToList();
@@ -64,6 +65,37 @@ namespace SchoolTermInfoApp
                 return count;
             }
 
+        }
+
+        public static int ObjectiveAssessmentCountCheck(Course selectedCourse)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<Assessment>();
+
+                var assessmentTable = conn.Table<Assessment>().ToList();
+
+
+
+            //need amount of each assessmentType. Each course can only contain 1 of each assessmentType
+
+            //https://stackoverflow.com/questions/8791540/multiple-where-clauses-with-linq-extension-methods
+            //Working on the "Where" query
+                var listOfAssessments = (from Assessment in assessmentTable
+                                         where Assessment.CourseNumber ==selectedCourse.Id
+                                         where Assessment.AssessmentType == "Objective Assessment"
+                                         select Assessment).ToList();
+
+                var objectiveAssessmentCount = listOfAssessments.Count();
+
+                
+
+
+
+                return objectiveAssessmentCount;
+            }
+
+            
         }
 
     }

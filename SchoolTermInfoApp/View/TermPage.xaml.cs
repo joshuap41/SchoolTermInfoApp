@@ -51,7 +51,7 @@ namespace SchoolTermInfoApp.View
         //Need to fix back button to not return to the "CreateNewCourse" page and add more courses
         void CreateNewCourse_Clicked(System.Object sender, System.EventArgs e)
         {
-            int count = App.CountCheck(selectedTerm);
+            int count = App.CourseCountCheck(selectedTerm);
 
             if (count <= 5)
                 Navigation.PushAsync(new CreateNewCoursePage(selectedTerm));
