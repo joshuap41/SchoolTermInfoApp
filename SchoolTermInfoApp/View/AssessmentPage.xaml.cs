@@ -20,8 +20,42 @@ namespace SchoolTermInfoApp.View
 
             this.selectedAssessment = selectedAssessment;
             this.selectedCourse = selectedCourse;
+
+            assessmentName.Text = selectedAssessment.AssessmentName;
+            assessmentType.Text = selectedAssessment.AssessmentType;
+            startDate.Text = selectedAssessment.StartDate.ToString(App.dateFormat);
+            finishDate.Text = selectedAssessment.FinishDate.ToString(App.dateFormat);
+
+            //Notification project
+            //assessmentNotifications.Text = selectedAssessment.AssessmentNotificationsOn == 1 ? "Enabled" : "Disabled";
         }
 
 
+
+
+
+        void HomeButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
+        }
+
+        void editAssessment_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
+
+        void deleteAssessment_Clicked(System.Object sender, System.EventArgs e)
+        {
+            using(SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<Assessment>();
+                int rows = conn.Delete(selectedAssessment);
+
+                if (rows > 0)
+                    DisplayAlert("Success","Assessment successfully deleted","Ok");
+                else
+                    DisplayAlert("Failure", "Assessment failed to delete", "Ok");
+            }
+            Navigation.PushAsync(new RequiredAssessmentsPage(selectedCourse));
+        }
     }
 }

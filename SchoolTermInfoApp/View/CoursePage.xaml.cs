@@ -22,7 +22,7 @@ namespace SchoolTermInfoApp.View
             this.selectedCourse = selectedCourse;
             this.currentTerm = currentTerm;
 
-            //change to binding in the UI
+            //change to binding in the UI Query and sort using linq to bind
             courseName.Text = selectedCourse.CourseName;
             mentorName.Text = selectedCourse.MentorName;
             mentorPhoneNumber.Text = selectedCourse.MentorPhoneNumber;

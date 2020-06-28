@@ -4,9 +4,8 @@
              x:Class="SchoolTermInfoApp.View.CoursePage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem
-            Text="Home"
-            Clicked="HomeToolbarItem_Clicked"/>
+        <ToolbarItem Text="Home"
+                     Clicked="HomeToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

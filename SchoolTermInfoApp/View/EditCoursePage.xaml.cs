@@ -1,7 +1,6 @@
 ﻿using SchoolTermInfoApp.Model;
 using System;
 using System.Collections.Generic;
-using SchoolTermInfoApp.Model;
 using SchoolTermInfoApp.View;
 using Xamarin.Forms;
 using SQLite;

@@ -3,7 +3,91 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SchoolTermInfoApp.View.AssessmentPage">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Home"
+                     Clicked="HomeButtonToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Assessment Details"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+
+            <TableView>
+                <TableSection>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Assessment Name:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="assessmentName"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Assessment Type:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="assessmentType"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Start Date:   "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="startDate"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Finish Date:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="finishDate"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Notification Status:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="assessmentNotifications"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableView>
+
+            <StackLayout>
+                <Button Text="Edit Assessment"
+                        x:Name="editAssessment"
+                        Margin="0"
+                        HeightRequest="35"
+                        Clicked="editAssessment_Clicked"
+                        BackgroundColor="{StaticResource blueColorForButton}"
+                        TextColor="{StaticResource white}"/>
+                <Button Text="Delete Assessment"
+                        x:Name="deleteAssessment"
+                        Margin="0"
+                        HeightRequest="35"
+                        Clicked="deleteAssessment_Clicked"
+                        BackgroundColor="{StaticResource blueColorForButton}"
+                        TextColor="{StaticResource white}"/>
+            </StackLayout>
+        </StackLayout>
 
     </ContentPage.Content>
 
