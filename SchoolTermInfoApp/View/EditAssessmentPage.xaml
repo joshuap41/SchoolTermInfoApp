@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolTermInfoApp.View.EditAssessmentPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Name     "
+                     Clicked="HomeButtonToolbarItem_Clicked"/>
+        <ToolbarItem Text="Save"
+                     Clicked="SaveButtonToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Edit Assessment"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <TableView>
+                <TableSection>
+                    <EntryCell x:Name="assessmentName"
+                               Label="Assessment Name:"/>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label Text="Assessment Type:"
+                                   Padding="0,10,3,0"/>
+                            <Picker x:Name="assessmentType"
+                                    Title="Type?">
+                                <Picker.Items>
+                                    <x:String>Objective Assessment</x:String>
+                                    <x:String>Performance Assessment</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label Text="Start Date:"
+                                   Padding="0,10,10,0"/>
+                            <DatePicker x:Name="startDate"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label Text="Finish Date:"
+                                   Padding="0,10,10,0"/>
+                            <DatePicker x:Name="finishDate"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13,0">
+                            <Label x:Name="assessmentNotification"
+                                   Text="Notification Status:"
+                                   Padding="0,10,100,0"/>
+                            <Switch x:Name="assessmentNotification1"
+                                    OnColor="AliceBlue"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                </TableSection>
+            </TableView>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

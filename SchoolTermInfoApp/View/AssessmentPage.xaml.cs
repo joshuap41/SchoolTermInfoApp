@@ -41,6 +41,7 @@ namespace SchoolTermInfoApp.View
 
         void editAssessment_Clicked(System.Object sender, System.EventArgs e)
         {
+
         }
 
         void deleteAssessment_Clicked(System.Object sender, System.EventArgs e)
