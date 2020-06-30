@@ -21,8 +21,7 @@ namespace SchoolTermInfoApp.View
             this.selectedAssessment = selectedAssessment;
             this.selectedCourse = selectedCourse;
 
-            assessmentName.Text = selectedAssessment.AssessmentName;
-            assessmentType.Text = selectedAssessment.AssessmentType;
+            assessmentType.Text = Convert.ToString(selectedAssessment.AssessmentType);
             startDate.Text = selectedAssessment.StartDate.ToString(App.dateFormat);
             finishDate.Text = selectedAssessment.FinishDate.ToString(App.dateFormat);
 
@@ -41,7 +40,7 @@ namespace SchoolTermInfoApp.View
 
         void editAssessment_Clicked(System.Object sender, System.EventArgs e)
         {
-
+            Navigation.PushAsync(new EditAssessmentPage(selectedCourse, selectedAssessment));
         }
 
         void deleteAssessment_Clicked(System.Object sender, System.EventArgs e)

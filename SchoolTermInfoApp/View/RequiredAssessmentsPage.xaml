@@ -29,7 +29,7 @@
                     <DataTemplate>
                         <ViewCell IsEnabled="True">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                <Label Text="{Binding AssessmentName}" VerticalOptions="Center" TextColor="Blue" />
+                                <Label Text="{Binding AssessmentType}" VerticalOptions="Center" TextColor="Blue"/>
                                 <Label Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}'}"  VerticalOptions="Center"/>
                                 <Label Text="{Binding FinishDate, StringFormat='{}{0:MM/dd/yyyy}'}" VerticalOptions="Center"/>
                             </StackLayout>

@@ -20,9 +20,6 @@
 
             <TableView>
                 <TableSection>
-                    <EntryCell x:Name="assessmentName"
-                               Placeholder="..."
-                               Label="Assessment Name:"/>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="13,0">
                             <Label Text="Assessment Type:"

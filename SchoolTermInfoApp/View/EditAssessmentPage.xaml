@@ -21,8 +21,7 @@
 
             <TableView>
                 <TableSection>
-                    <EntryCell x:Name="assessmentName"
-                               Label="Assessment Name:"/>
+                    
 
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="13,0">

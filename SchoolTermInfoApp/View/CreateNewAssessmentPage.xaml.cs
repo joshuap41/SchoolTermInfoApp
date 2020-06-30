@@ -21,7 +21,6 @@ namespace SchoolTermInfoApp.View
         {
             Assessment createAssessment = new Assessment()
             {
-                AssessmentName = assessmentName.Text,
                 AssessmentType = Convert.ToString(assessmentType.SelectedItem),
                 StartDate = startDate.Date,
                 FinishDate = finishDate.Date,

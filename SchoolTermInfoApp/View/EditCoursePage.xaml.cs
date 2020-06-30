@@ -47,7 +47,6 @@ namespace SchoolTermInfoApp.View
             selectedCourse.CourseNotificationsOn = courseNotifications.On == true ? 1 : 0;
                 
             
-
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Course>();
