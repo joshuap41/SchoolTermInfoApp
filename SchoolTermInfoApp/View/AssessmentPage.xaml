@@ -21,6 +21,16 @@
 
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Assessment Name: "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="assessmentName"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
                             <Label Text="Assessment Type:  "
                                    FontAttributes="Bold"
                                    FontSize="Medium"/>

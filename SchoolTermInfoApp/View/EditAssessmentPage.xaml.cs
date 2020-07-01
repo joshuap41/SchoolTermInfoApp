@@ -21,7 +21,8 @@ namespace SchoolTermInfoApp.View
             this.selectedCourse = selectedCourse;
             this.selectedAssessment = selectedAssessment;
 
-            assessmentType.SelectedItem = selectedAssessment.AssessmentType;
+            assessmentName.Text = selectedAssessment.AssessmentName;
+            assessmentType.Text = Convert.ToString(selectedAssessment.AssessmentType);
             startDate.Date = selectedAssessment.StartDate;
             finishDate.Date = selectedAssessment.FinishDate;
             selectedCourse.Id = selectedAssessment.CourseNumber;
@@ -41,10 +42,11 @@ namespace SchoolTermInfoApp.View
 
 
 
-
+        //check with Lauren if this will work???
         void SaveButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {
-            selectedAssessment.AssessmentType = Convert.ToString(assessmentType.SelectedItem);
+            selectedAssessment.AssessmentName = assessmentName.Text;
+            //selectedAssessment.AssessmentType = Convert.ToString(assessmentType.SelectedItem);
             selectedAssessment.StartDate = startDate.Date;
             selectedAssessment.FinishDate = finishDate.Date;
             selectedAssessment.CourseNumber = selectedCourse.Id;
@@ -57,28 +59,28 @@ namespace SchoolTermInfoApp.View
             {
                 conn.CreateTable<Assessment>();
 
-                var ObjCount = App.ObjectiveAssessmentCountCheck(selectedCourse);
+                conn.Update(selectedAssessment);
 
-                var PerCount = App.PerformanceAssessmentCountCheck(selectedCourse);
+             //Revisit the following if the EditAssessmentPage doesn't fly...
+                //var ObjCount = App.ObjectiveAssessmentCountCheck(selectedCourse);
+                //var PerCount = App.PerformanceAssessmentCountCheck(selectedCourse);
+                //var Type = Convert.ToString(assessmentType.SelectedItem);
+                ////var Changed = assessmentType.SelectedIndexChanged;
 
-                var Type = Convert.ToString(assessmentType.SelectedItem);
 
-                //var Changed = assessmentType.SelectedIndexChanged;
-
-
-                if (ObjCount == 1 && )
-                {
-                    DisplayAlert("Failure", "Only 1 Objective Assessment is allowed per course", "Ok");
-                }
-                else if (PerCount == 1 && Type == "Performance Assessment")
-                {
-                    DisplayAlert("Failure", "Only 1 Performance Assessment is allowed per course", "Ok");
-                }
-                else
-                {
-                    conn.Update(selectedAssessment);
-                    DisplayAlert("Success", "Assessment has been successfully created", "Ok");
-                }
+                //if (ObjCount == 1 && )
+                //{
+                //    DisplayAlert("Failure", "Only 1 Objective Assessment is allowed per course", "Ok");
+                //}
+                //else if (PerCount == 1 && Type == "Performance Assessment")
+                //{
+                //    DisplayAlert("Failure", "Only 1 Performance Assessment is allowed per course", "Ok");
+                //}
+                //else
+                //{
+                //    conn.Update(selectedAssessment);
+                //    DisplayAlert("Success", "Assessment has been successfully created", "Ok");
+                //}
             }
             Navigation.PushAsync(new RequiredAssessmentsPage(selectedCourse));
         }

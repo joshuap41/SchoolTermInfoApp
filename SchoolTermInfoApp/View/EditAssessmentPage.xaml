@@ -4,7 +4,7 @@
              x:Class="SchoolTermInfoApp.View.EditAssessmentPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Name     "
+        <ToolbarItem Text="Home     "
                      Clicked="HomeButtonToolbarItem_Clicked"/>
         <ToolbarItem Text="Save"
                      Clicked="SaveButtonToolbarItem_Clicked"/>
@@ -21,8 +21,11 @@
 
             <TableView>
                 <TableSection>
-                    
 
+                    <EntryCell x:Name="assessmentName"
+                               Placeholder="..."
+                               Label="Assessment Name:"/>
+                    <!--
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="13,0">
                             <Label Text="Assessment Type:"
@@ -34,6 +37,15 @@
                                     <x:String>Performance Assessment</x:String>
                                 </Picker.Items>
                             </Picker>
+                        </StackLayout>
+                    </ViewCell>
+                    -->
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Assessment Type:  "/>
+                            <Label x:Name="assessmentType"
+                                   Padding="0,3,0,0"/>
                         </StackLayout>
                     </ViewCell>
 
