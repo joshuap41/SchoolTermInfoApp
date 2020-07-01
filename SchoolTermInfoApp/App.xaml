@@ -17,8 +17,6 @@
 
                         <!--Create a "style" for the titles of each page-->
 
-
-
             <!--This "Style" applies to all "Button(s)" within the app because the specific button is not set-->
             <Style x:Key="normalButton" TargetType="Button">
                 <Setter Property="BackgroundColor"

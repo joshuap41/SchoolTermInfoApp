@@ -20,7 +20,7 @@ namespace SchoolTermInfoApp.View
             this.selectedTerm = selectedTerm;
         }
 
-        //save button
+        
         void SaveButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {
             Course createCourse = new Course()

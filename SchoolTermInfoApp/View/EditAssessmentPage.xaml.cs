@@ -39,6 +39,9 @@ namespace SchoolTermInfoApp.View
 
 
 
+
+
+
         void SaveButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {
             selectedAssessment.AssessmentType = Convert.ToString(assessmentType.SelectedItem);
@@ -54,14 +57,30 @@ namespace SchoolTermInfoApp.View
             {
                 conn.CreateTable<Assessment>();
 
-                var rows = conn.Update(selectedAssessment);
+                var ObjCount = App.ObjectiveAssessmentCountCheck(selectedCourse);
 
-                if (rows > 0)
-                    DisplayAlert("Success", "Assessment successfully updated", "Ok");
+                var PerCount = App.PerformanceAssessmentCountCheck(selectedCourse);
+
+                var Type = Convert.ToString(assessmentType.SelectedItem);
+
+                //var Changed = assessmentType.SelectedIndexChanged;
+
+
+                if (ObjCount == 1 && )
+                {
+                    DisplayAlert("Failure", "Only 1 Objective Assessment is allowed per course", "Ok");
+                }
+                else if (PerCount == 1 && Type == "Performance Assessment")
+                {
+                    DisplayAlert("Failure", "Only 1 Performance Assessment is allowed per course", "Ok");
+                }
                 else
-                    DisplayAlert("Failure", "Assessment failed to update", "Ok");
+                {
+                    conn.Update(selectedAssessment);
+                    DisplayAlert("Success", "Assessment has been successfully created", "Ok");
+                }
             }
-            Navigation.PushAsync(new AssessmentPage(selectedAssessment, selectedCourse));
+            Navigation.PushAsync(new RequiredAssessmentsPage(selectedCourse));
         }
     }
 }

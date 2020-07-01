@@ -21,7 +21,7 @@ namespace SchoolTermInfoApp
 
             //MainPage = new MainPage();
 
-            //Creates a navigation for use in iOS
+            //NavigationPage creates a back button for use in iOS
             MainPage = new NavigationPage(new MainPage());
         }
 
@@ -75,12 +75,8 @@ namespace SchoolTermInfoApp
 
                 var assessmentTable = conn.Table<Assessment>().ToList();
 
+            //need count of Objective Assessments for a specific course
 
-
-            //need amount of each assessmentType. Each course can only contain 1 of each assessmentType
-
-            //https://stackoverflow.com/questions/8791540/multiple-where-clauses-with-linq-extension-methods
-            //Working on the "Where" query
                 var listOfAssessments = (from Assessment in assessmentTable
                                          where Assessment.CourseNumber ==selectedCourse.Id
                                          where Assessment.AssessmentType == "Objective Assessment"
@@ -88,15 +84,35 @@ namespace SchoolTermInfoApp
 
                 var objectiveAssessmentCount = listOfAssessments.Count();
 
-                
-
-
-
                 return objectiveAssessmentCount;
             }
 
             
         }
+
+        public static int PerformanceAssessmentCountCheck(Course selectedCourse)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<Assessment>();
+
+                var assessmentTable = conn.Table<Assessment>().ToList();
+
+                //need count of Performance Assessments for a specific course
+
+                var listOfAssessments = (from Assessment in assessmentTable
+                                         where Assessment.CourseNumber == selectedCourse.Id
+                                         where Assessment.AssessmentType == "Performance Assessment"
+                                         select Assessment).ToList();
+
+                var performanceAssessmentCount = listOfAssessments.Count();
+
+                return performanceAssessmentCount;
+            }
+
+
+        }
+        //PerformanceAssessmentCheck()
 
     }
 }

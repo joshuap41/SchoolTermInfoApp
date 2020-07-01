@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SQLite;
 using SchoolTermInfoApp.Model;
 using SchoolTermInfoApp.View;
+using System.Linq;
 
 using Xamarin.Forms;
 
@@ -26,8 +27,13 @@ namespace SchoolTermInfoApp.View
             using(SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Assessment>();
-                var assessments = conn.Table<Assessment>().ToList();
-                assessmentsListView.ItemsSource = assessments;
+                var assessmentTable = conn.Table<Assessment>().ToList();
+
+                var listOfAssessments = (from assessment in assessmentTable
+                                         where assessment.CourseNumber == selectedCourse.Id
+                                         select assessment).ToList();
+
+                assessmentsListView.ItemsSource = listOfAssessments;
             }
         }
 
@@ -41,12 +47,8 @@ namespace SchoolTermInfoApp.View
 
         void CreateNewAssessment_Clicked(System.Object sender, System.EventArgs e)
         {
-            //Need to restrict to 1 PA and 1 OA
             Navigation.PushAsync(new CreateNewAssessmentPage(selectedCourse));
         }
-
-
-
 
         void HomeButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {

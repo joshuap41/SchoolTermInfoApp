@@ -11,6 +11,7 @@ namespace SchoolTermInfoApp.View
     public partial class CreateNewAssessmentPage : ContentPage
     {
         private Course selectedCourse;
+
         public CreateNewAssessmentPage(Course selectedCourse)
         {
             InitializeComponent();
@@ -30,19 +31,34 @@ namespace SchoolTermInfoApp.View
                 //AssessmentNotificationsOn = assessmentNotification1.On
             };
 
-            using(SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+
+
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Assessment>();
 
                 var ObjCount = App.ObjectiveAssessmentCountCheck(selectedCourse);
 
-                var rows = conn.Insert(createAssessment);
+                var PerCount = App.PerformanceAssessmentCountCheck(selectedCourse);
 
-                if (rows > 0)
-                    DisplayAlert("Success", "Assessment Successfully Created", "Ok");
+                var Type = Convert.ToString(assessmentType.SelectedItem);
+
+
+                //need to work on this validation
+
+                if (ObjCount > 0 && Type == "Objective Assessment" )
+                {
+                    DisplayAlert("Failure", "Only 1 Objective Assessment is allowed per course", "Ok");
+                }
+                else if (PerCount > 0 && Type == "Performance Assessment")
+                {
+                    DisplayAlert("Failure", "Only 1 Performance Assessment is allowed per course", "Ok");
+                }
                 else
-                    DisplayAlert("Failure","Assessment Failed to Create","Ok");
-
+                {
+                    conn.Insert(createAssessment);
+                    DisplayAlert("Success", "Assessment has been successfully created", "Ok");
+                }
             }
             Navigation.PushAsync(new RequiredAssessmentsPage(selectedCourse));
         }
