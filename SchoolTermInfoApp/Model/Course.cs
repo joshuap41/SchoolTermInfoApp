@@ -23,6 +23,6 @@ namespace SchoolTermInfoApp.Model
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
         public string CourseNotes { get; set; }
-        public int CourseNotificationsOn { get; set; }
+        public int CourseNotifications { get; set; }
     }
 }

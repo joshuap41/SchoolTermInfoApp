@@ -48,7 +48,27 @@ namespace SchoolTermInfoApp.iOS
             }
 
 
-            //Added the following to implement the sqlite db. This is different than Android due to Apple not allowing the "Personal folder to be used.
+        //Used for local NotificationsPlugin
+        //https://github.com/edsnider/LocalNotificationsPlugin
+
+            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+            {
+                // Ask the user for permission to get notifications on iOS 10.0+
+                UNUserNotificationCenter.Current.RequestAuthorization(
+                        UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
+                        (approved, error) => { });
+            }
+            else if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+            {
+                // Ask the user for permission to get notifications on iOS 8.0+
+                var settings = UIUserNotificationSettings.GetSettingsForTypes(
+                        UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
+                        new NSSet());
+
+                UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
+            }
+
+        //Added the following to implement the sqlite db. This is different than Android due to Apple not allowing the "Personal folder to be used.
             string dbName = "travel_db.sqlite";
             //We use the Path.Combine to allow it to be published.
             string folderPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "..", "Library");

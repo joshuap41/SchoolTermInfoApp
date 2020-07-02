@@ -12,6 +12,7 @@ namespace SchoolTermInfoApp.View
     {
         Course selectedCourse;
         Term currentTerm;
+
         public EditCoursePage(Course selectedCourse, Term currentTerm)
         {
             InitializeComponent();
@@ -27,9 +28,7 @@ namespace SchoolTermInfoApp.View
             startDate.Date = selectedCourse.StartDate;
             finishDate.Date = selectedCourse.FinishDate;
             courseNotes.Text = selectedCourse.CourseNotes;
-
-            //This shite doesn't work... duh... need to toggle the button
-            courseNotifications.Text = selectedCourse.CourseNotificationsOn == 1 ? "Enabled" : "Disabled";
+            courseNotifications.On = Convert.ToBoolean(selectedCourse.CourseNotifications);
         }
 
         
@@ -44,7 +43,7 @@ namespace SchoolTermInfoApp.View
             selectedCourse.StartDate = startDate.Date;
             selectedCourse.FinishDate = finishDate.Date;
             selectedCourse.CourseNotes = courseNotes.Text;
-            selectedCourse.CourseNotificationsOn = courseNotifications.On == true ? 1 : 0;
+            selectedCourse.CourseNotifications = courseNotifications.On == true ? 1 : 0;
                 
             
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))

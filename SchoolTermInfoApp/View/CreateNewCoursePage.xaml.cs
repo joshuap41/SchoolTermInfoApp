@@ -36,7 +36,7 @@ namespace SchoolTermInfoApp.View
                 TermNumber = selectedTerm.Id,
 
                 //change to mosh example Udemy
-                CourseNotificationsOn = courseNotifications.On == true ? 1 : 0
+                CourseNotifications = courseNotifications.On == true ? 1 : 0
             };
 
 
