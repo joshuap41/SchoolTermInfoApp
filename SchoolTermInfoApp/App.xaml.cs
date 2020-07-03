@@ -112,7 +112,81 @@ namespace SchoolTermInfoApp
 
 
         }
-        //PerformanceAssessmentCheck()
+        //PerformanceAssessmentCheck()???
+
+        public static void MyTermInformation()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<Term>();
+                var termTable = conn.Table<Term>().ToList();
+
+                //working progress
+
+                var listOfTerms = (from term in termTable
+                                     where term.TermName == "Final Term"
+                                     select term).Distinct().ToList();
+
+                var lists = (from term in termTable
+                             select term.TermName == "Final Term").ToList();
+                //
+
+
+
+                conn.CreateTable<Course>();
+                conn.CreateTable<Assessment>();
+
+            //refactor this
+                if(!termTable.Any())
+                {
+                    Term myTerm = new Term()
+                    {
+                        TermName = "Final Term",
+                        StartDate = new DateTime(2020, 07, 01),
+                        FinishDate = new DateTime(2020, 07, 10)
+                    };
+                    conn.Insert(myTerm);
+
+                    Course myCourse = new Course()
+                    {
+                        TermNumber = myTerm.Id,
+                        CourseName = "Mobile App Development",
+                        MentorName = "Lauren Provost",
+                        MentorPhoneNumber = "385 428 8921",
+                        MentorEmail = "lauren.provost@wgu.edu",
+                        CourseStatus = "Active",
+                        StartDate = new DateTime(2020, 07, 01),
+                        FinishDate = new DateTime(2020, 07, 09),
+                        CourseNotes = "This class is hard!",
+                        CourseNotifications = 1,
+                    };
+                    conn.Insert(myCourse);
+
+                    Assessment myObAssessment = new Assessment()
+                    {
+                        AssessmentName = "Ob Assessment 1",
+                        CourseNumber = myCourse.Id,
+                        StartDate = new DateTime(2020, 07, 01),
+                        FinishDate = new DateTime(2020, 07, 09),
+                        AssessmentType = "Objective Assessment",
+                        AssessmentNotifications = 1
+                    };
+                    conn.Insert(myObAssessment);
+
+                    Assessment myPerAssessment = new Assessment()
+                    {
+                        AssessmentName = "Per Assessment 2",
+                        CourseNumber = myCourse.Id,
+                        StartDate = new DateTime(2020, 07, 01),
+                        FinishDate = new DateTime(2020, 07, 09),
+                        AssessmentType = "Performance Assessment",
+                        AssessmentNotifications = 1
+                    };
+                    conn.Insert(myPerAssessment);
+                }
+
+            }
+        }
 
     }
 }

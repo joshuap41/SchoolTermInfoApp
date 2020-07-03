@@ -9,11 +9,7 @@ namespace SchoolTermInfoApp.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        // should I track this???
-        //public int TermNumnber { get; set; }
-
         [MaxLength(255)]
-        //replace term number with the ID
         public int TermNumber { get; set; }
         public string CourseName { get; set; }
         public string MentorName { get; set; }

@@ -33,6 +33,8 @@ namespace SchoolTermInfoApp
         {
             base.OnAppearing();
 
+            App.MyTermInformation();
+
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             { 
                 conn.CreateTable<Term>();
