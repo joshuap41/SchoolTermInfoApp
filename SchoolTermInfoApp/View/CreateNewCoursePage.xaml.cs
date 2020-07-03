@@ -34,8 +34,6 @@ namespace SchoolTermInfoApp.View
                 FinishDate = finishDate.Date,
                 CourseNotes = courseNotes.Text,
                 TermNumber = selectedTerm.Id,
-
-                //change to mosh example Udemy
                 CourseNotifications = courseNotifications.On == true ? 1 : 0
             };
 

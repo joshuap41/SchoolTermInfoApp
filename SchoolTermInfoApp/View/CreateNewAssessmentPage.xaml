@@ -57,10 +57,10 @@
 
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="13,0">
-                            <Label x:Name="assessmentNotification"
+                            <Label x:Name="assessmentNotificationFix"
                                    Text="Notification Status:"
                                    Padding="0,10,100,0"/>
-                            <Switch x:Name="assessmentNotification1"
+                            <Switch x:Name="assessmentNotifications"
                                     OnColor="AliceBlue"/>
                         </StackLayout>
                     </ViewCell>

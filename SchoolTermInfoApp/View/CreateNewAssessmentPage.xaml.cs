@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Forms;
 using System.Collections.Generic;
 using SQLite;
 using SchoolTermInfoApp.Model;
@@ -28,8 +29,8 @@ namespace SchoolTermInfoApp.View
                 FinishDate = finishDate.Date,
                 CourseNumber = selectedCourse.Id,
 
-                //notifications need work
-                //AssessmentNotificationsOn = assessmentNotification1.On
+                //WTF This worked with the CreateNewCoursePage?!?!?!?!?
+                //AssessmentNotifications = assessmentNotificationFix.On == true ? 1 : 0
             };
 
 
