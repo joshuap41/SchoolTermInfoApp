@@ -97,7 +97,22 @@
                                    FontAttributes="Bold"
                                    FontSize="Medium"/>
                             <Label x:Name="courseNotes"
+                                   VerticalOptions="FillAndExpand"
                                    Padding="0,3,0,0"/>
+                            
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout>
+                            <Button Text="Share course notes"
+                                    x:Name="ShareButton"
+                                    HorizontalOptions="Start"
+                                    TextColor="AliceBlue"
+                                    HeightRequest="50"
+                                    WidthRequest="60"
+                                    FontSize="Micro"
+                                    Clicked="ShareButton_Clicked_1"/>
                         </StackLayout>
                     </ViewCell>
 

@@ -1,7 +1,7 @@
 ﻿using SchoolTermInfoApp.Model;
 using System;
 using System.Collections.Generic;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using SQLite;
 using SchoolTermInfoApp.View;
@@ -69,6 +69,28 @@ namespace SchoolTermInfoApp.View
         private void HomeToolbarItem_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new MainPage());
+        }
+
+        //private async void ShareButton_Clicked(System.Object sender, System.EventArgs e)
+        //{
+            
+        //}
+
+        private async void ShareButton_Clicked_1(System.Object sender, System.EventArgs e)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Text = courseNotes.Text,
+                Title = "Share your notes on the course"
+            });
+        }
+
+        void ShareButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
+
+        void ShareButton2_Clicked(System.Object sender, System.EventArgs e)
+        {
         }
     }
 }
