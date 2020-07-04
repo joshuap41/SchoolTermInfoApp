@@ -65,16 +65,9 @@
                         </StackLayout>
                     </ViewCell>
 
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="13,0">
-                            <Label x:Name="assessmentNotification"
-                                   Text="Notification Status:"
-                                   Padding="0,10,100,0"/>
-                            <Switch x:Name="assessmentNotification1"
-                                    OnColor="AliceBlue"/>
-                        </StackLayout>
-                    </ViewCell>
-
+                    <SwitchCell x:Name="assessmentNotifications1"
+                                Text="Notificaiton Status:"
+                                OnColor="AliceBlue"/>
                 </TableSection>
             </TableView>
 

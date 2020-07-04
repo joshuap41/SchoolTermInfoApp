@@ -26,10 +26,7 @@ namespace SchoolTermInfoApp.View
             startDate.Date = selectedAssessment.StartDate;
             finishDate.Date = selectedAssessment.FinishDate;
             selectedCourse.Id = selectedAssessment.CourseNumber;
-
-            //bools and ints.... again...
-            //assessmentNotification = currentAssessment.AssessmentNotificationsOn;
-
+            assessmentNotifications1.On = Convert.ToBoolean(selectedAssessment.AssessmentNotifications);
         }
 
         void HomeButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
@@ -38,11 +35,7 @@ namespace SchoolTermInfoApp.View
         }
 
 
-
-
-
-
-        //check with Lauren if this will work???
+        //check with Lauren?
         void SaveButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {
             selectedAssessment.AssessmentName = assessmentName.Text;
@@ -50,9 +43,7 @@ namespace SchoolTermInfoApp.View
             selectedAssessment.StartDate = startDate.Date;
             selectedAssessment.FinishDate = finishDate.Date;
             selectedAssessment.CourseNumber = selectedCourse.Id;
-
-            //Notifications here
-            //selectedAssessment.AssessmentNotificationsOn = assessmentNotification1.IsEnabled;
+            selectedAssessment.AssessmentNotifications = assessmentNotifications1.On == true ? 1 : 0;
 
 
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
@@ -61,7 +52,7 @@ namespace SchoolTermInfoApp.View
 
                 conn.Update(selectedAssessment);
 
-             //Revisit the following if the EditAssessmentPage doesn't fly...
+             //needless...
                 //var ObjCount = App.ObjectiveAssessmentCountCheck(selectedCourse);
                 //var PerCount = App.PerformanceAssessmentCountCheck(selectedCourse);
                 //var Type = Convert.ToString(assessmentType.SelectedItem);

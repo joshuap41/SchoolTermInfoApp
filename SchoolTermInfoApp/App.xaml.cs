@@ -5,6 +5,7 @@ using SQLite;
 using SchoolTermInfoApp.Model;
 using SchoolTermInfoApp.View;
 using System.Linq;
+using Plugin.LocalNotifications;
 
 
 namespace SchoolTermInfoApp
@@ -14,12 +15,10 @@ namespace SchoolTermInfoApp
         public static string dateFormat = " MM/dd/yyyy";
 
         public static string DatabaseLocation = string.Empty;
-
+        
         public App()
         {
             InitializeComponent();
-
-            //MainPage = new MainPage();
 
             //NavigationPage creates a back button for use in iOS
             MainPage = new NavigationPage(new MainPage());
@@ -121,23 +120,17 @@ namespace SchoolTermInfoApp
                 conn.CreateTable<Term>();
                 var termTable = conn.Table<Term>().ToList();
 
-                //working progress
-
                 var listOfTerms = (from term in termTable
                                      where term.TermName == "Final Term"
                                      select term).Distinct().ToList();
 
                 var lists = (from term in termTable
                              select term.TermName == "Final Term").ToList();
-                //
-
-
 
                 conn.CreateTable<Course>();
                 conn.CreateTable<Assessment>();
 
-            //refactor this
-                if(!termTable.Any())
+                if(termTable.Any() == false)
                 {
                     Term myTerm = new Term()
                     {
@@ -156,7 +149,7 @@ namespace SchoolTermInfoApp
                         MentorEmail = "lauren.provost@wgu.edu",
                         CourseStatus = "Active",
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 09),
+                        FinishDate = new DateTime(2020, 07, 03),
                         CourseNotes = "This class is hard!",
                         CourseNotifications = 1,
                     };
@@ -167,7 +160,7 @@ namespace SchoolTermInfoApp
                         AssessmentName = "Ob Assessment 1",
                         CourseNumber = myCourse.Id,
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 09),
+                        FinishDate = new DateTime(2020, 07, 03),
                         AssessmentType = "Objective Assessment",
                         AssessmentNotifications = 1
                     };
@@ -178,7 +171,7 @@ namespace SchoolTermInfoApp
                         AssessmentName = "Per Assessment 2",
                         CourseNumber = myCourse.Id,
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 09),
+                        FinishDate = new DateTime(2020, 07, 03),
                         AssessmentType = "Performance Assessment",
                         AssessmentNotifications = 1
                     };
@@ -187,6 +180,5 @@ namespace SchoolTermInfoApp
 
             }
         }
-
     }
 }

@@ -19,7 +19,7 @@ namespace SchoolTermInfoApp
 
     public partial class MainPage : ContentPage
     {
-        private bool _firstAppearnce = true;
+        
 
         //public static string SelectedTerm = string.Empty;
 
@@ -35,8 +35,10 @@ namespace SchoolTermInfoApp
 
             App.MyTermInformation();
 
+            bool appOpening = true;
+
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            { 
+            {
                 conn.CreateTable<Term>();
                 var terms = conn.Table<Term>().ToList();
                 termListView.ItemsSource = terms;
@@ -47,39 +49,45 @@ namespace SchoolTermInfoApp
                 conn.CreateTable<Assessment>();
                 var assessmentList = conn.Table<Assessment>().ToList();
 
-
-
-            //This needs refactoring a lot!
-                if (_firstAppearnce)
+                //Notifications
+                try
                 {
-                    _firstAppearnce = false;
-
-                    int courseId = 0;
-                    foreach (Course course in courseList)
+                    if (appOpening)
                     {
-                        courseId++;
-                        if (course.CourseNotifications == 1)
+                        appOpening = false;
+
+                        var courseId = 0;
+                        foreach (Course course in courseList)
                         {
-                            if (course.StartDate == DateTime.Today)
-                                CrossLocalNotifications.Current.Show("Reminder", $"{course.CourseName} starts today!", courseId);
-                            if (course.FinishDate == DateTime.Today)
-                                CrossLocalNotifications.Current.Show("Reminder", $"{course.CourseName} ends today!", courseId);
+                            courseId++;
+
+                            if (course.CourseNotifications == 1)
+                            {
+                                if (course.StartDate == DateTime.Today)
+                                    CrossLocalNotifications.Current.Show("Alert", $"{course.CourseName} begins today.", courseId);
+                                if (course.FinishDate == DateTime.Today)
+                                    CrossLocalNotifications.Current.Show("Alert", $"{course.CourseName} finishes today.", courseId);
+                            }
+                        }
+
+                        var assessmentId = courseId;
+                        foreach (Assessment assessment in assessmentList)
+                        {
+                            assessmentId++;
+
+                            if (assessment.AssessmentNotifications == 1)
+                            {
+                                if (assessment.StartDate == DateTime.Today)
+                                    CrossLocalNotifications.Current.Show("Alert", $"{assessment.AssessmentName} begins today.", assessmentId);
+                                if (assessment.FinishDate == DateTime.Today)
+                                    CrossLocalNotifications.Current.Show("Alert", $"{assessment.AssessmentName} finishes today.", assessmentId);
+                            }
                         }
                     }
-
-
-                    int assessmentId = courseId;
-                    foreach (Assessment assessment in assessmentList)
-                    {
-                        assessmentId++;
-                        if (assessment.AssessmentNotifications == 1)
-                        {
-                            if (assessment.StartDate == DateTime.Today)
-                                CrossLocalNotifications.Current.Show("Reminder", $"{assessment.AssessmentName} starts today!", assessmentId);
-                            if (assessment.FinishDate == DateTime.Today)
-                                CrossLocalNotifications.Current.Show("Reminder", $"{assessment.AssessmentName} ends today!", assessmentId);
-                        }
-                    }
+                }
+                catch (Exception)
+                {
+                    DisplayAlert("Failure", "Notifications failed to be displayed", "Ok");
                 }
             }
         }

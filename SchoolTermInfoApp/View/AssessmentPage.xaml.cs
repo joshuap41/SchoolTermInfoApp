@@ -25,9 +25,7 @@ namespace SchoolTermInfoApp.View
             assessmentType.Text = Convert.ToString(selectedAssessment.AssessmentType);
             startDate.Text = selectedAssessment.StartDate.ToString(App.dateFormat);
             finishDate.Text = selectedAssessment.FinishDate.ToString(App.dateFormat);
-
-            //Notification project
-            //assessmentNotifications.Text = selectedAssessment.AssessmentNotificationsOn == 1 ? "Enabled" : "Disabled";
+            assessmentNotifications1.Text = selectedAssessment.AssessmentNotifications == 1 ? "Enabled" : "Disabled";
         }
 
 

@@ -28,9 +28,7 @@ namespace SchoolTermInfoApp.View
                 StartDate = startDate.Date,
                 FinishDate = finishDate.Date,
                 CourseNumber = selectedCourse.Id,
-
-                //WTF This worked with the CreateNewCoursePage?!?!?!?!?
-                //AssessmentNotifications = assessmentNotificationFix.On == true ? 1 : 0
+                AssessmentNotifications = assessmentNotifications1.On == true ? 1 : 0
             };
 
 

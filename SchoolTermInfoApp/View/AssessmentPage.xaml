@@ -64,7 +64,7 @@
                             <Label Text="Notification Status:  "
                                    FontAttributes="Bold"
                                    FontSize="Medium"/>
-                            <Label x:Name="assessmentNotifications"
+                            <Label x:Name="assessmentNotifications1"
                                    Padding="0,3,0,0"/>
                         </StackLayout>
                     </ViewCell>
