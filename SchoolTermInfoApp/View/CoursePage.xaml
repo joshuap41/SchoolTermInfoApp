@@ -90,32 +90,6 @@
                                    Padding="0,3,0,0"/>
                         </StackLayout>
                     </ViewCell>
-
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
-                            <Label Text="Course Notes:  "
-                                   FontAttributes="Bold"
-                                   FontSize="Medium"/>
-                            <Label x:Name="courseNotes"
-                                   VerticalOptions="FillAndExpand"
-                                   Padding="0,3,0,0"/>
-                            
-                        </StackLayout>
-                    </ViewCell>
-
-                    <ViewCell>
-                        <StackLayout>
-                            <Button Text="Share course notes"
-                                    x:Name="ShareButton"
-                                    HorizontalOptions="Start"
-                                    TextColor="AliceBlue"
-                                    HeightRequest="50"
-                                    WidthRequest="60"
-                                    FontSize="Micro"
-                                    Clicked="ShareButton_Clicked_1"/>
-                        </StackLayout>
-                    </ViewCell>
-
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
                             <Label Text="Notification Status:   "
@@ -126,10 +100,81 @@
                             
                         </StackLayout>
                     </ViewCell>
+                        
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"  VerticalOptions="Center" Padding="10,10,0,0">
+                            <Label Text="Course Notes:"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Center" />
+                            <Label x:Name="courseNotes"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Center"/>
+                           <Button Text="Share"
+                                     x:Name="ShareButton"
+                                     HorizontalOptions="Start"
+                                     BackgroundColor="Transparent"
+                                     TextColor="{StaticResource blueColorForButton}"
+                                     HeightRequest="50"
+                                     WidthRequest="70"
+                                     FontSize="Small"
+                                     Clicked="ShareButton_Clicked_1"/>
+                        </StackLayout>
+                    </ViewCell>
 
 
-                    
+                    <!--
+                    <ViewCell>
+                        <Frame BorderColor="Gray"
+                               CornerRadius="5"
+                               Padding="8">
+                          <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                            <Label Text="Course Notes:"
+                                   FontSize="Medium"
+                                   FontAttributes="Bold" />
+                            <BoxView Color="Gray"
+                                     HeightRequest="2"
+                                     HorizontalOptions="Fill" />
+                            <Label x:Name="courseNotes"/>
+                          </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                    -->
+                    <!--
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+                            
+                            <Label Text="Course Notes"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            
+                            <Button Text="Course Notes (Share)"
+                                    x:Name="ShareButton"
+                                    BackgroundColor="Transparent"
+                                    TextColor="{StaticResource blueColorForButton}"
+                                    FontAttributes="Bold"
+                                    HeightRequest="50"
+                                    WidthRequest="800"
+                                    FontSize="Medium"
+                                    Clicked="ShareButton_Clicked_1"/>
 
+                            <Frame BorderColor="{StaticResource blueColorForButton}"
+                                   CornerRadius="5"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2">
+                                <StackLayout>
+                                    <Label x:Name="courseNotes"
+                                           FontSize="Medium"/>
+                                </StackLayout>
+
+                            </Frame>
+                        </StackLayout>
+                    </ViewCell>
+                    -->
                 </TableSection>
             </TableView>
 

@@ -136,7 +136,7 @@ namespace SchoolTermInfoApp
                     {
                         TermName = "Final Term",
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 10)
+                        FinishDate = new DateTime(2020, 07, 05)
                     };
                     conn.Insert(myTerm);
 
@@ -144,13 +144,13 @@ namespace SchoolTermInfoApp
                     {
                         TermNumber = myTerm.Id,
                         CourseName = "Mobile App Development",
-                        MentorName = "Lauren Provost",
-                        MentorPhoneNumber = "385 428 8921",
-                        MentorEmail = "lauren.provost@wgu.edu",
+                        MentorName = "Joshua Johnson",
+                        MentorPhoneNumber = "1(706)572-6816",
+                        MentorEmail = "jjoh706@wgu.edu",
                         CourseStatus = "Active",
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 03),
-                        CourseNotes = "This class is hard!",
+                        FinishDate = new DateTime(2020, 07, 05),
+                        CourseNotes = "This class is awesome!",
                         CourseNotifications = 1,
                     };
                     conn.Insert(myCourse);
@@ -160,7 +160,7 @@ namespace SchoolTermInfoApp
                         AssessmentName = "Ob Assessment 1",
                         CourseNumber = myCourse.Id,
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 03),
+                        FinishDate = new DateTime(2020, 07, 05),
                         AssessmentType = "Objective Assessment",
                         AssessmentNotifications = 1
                     };
@@ -171,7 +171,7 @@ namespace SchoolTermInfoApp
                         AssessmentName = "Per Assessment 2",
                         CourseNumber = myCourse.Id,
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 03),
+                        FinishDate = new DateTime(2020, 07, 05),
                         AssessmentType = "Performance Assessment",
                         AssessmentNotifications = 1
                     };

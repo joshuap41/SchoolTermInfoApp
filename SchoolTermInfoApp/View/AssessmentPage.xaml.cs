@@ -28,10 +28,6 @@ namespace SchoolTermInfoApp.View
             assessmentNotifications1.Text = selectedAssessment.AssessmentNotifications == 1 ? "Enabled" : "Disabled";
         }
 
-
-
-
-
         void HomeButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new MainPage());

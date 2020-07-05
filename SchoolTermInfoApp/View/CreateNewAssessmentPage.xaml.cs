@@ -3,9 +3,7 @@ using Xamarin.Forms;
 using System.Collections.Generic;
 using SQLite;
 using SchoolTermInfoApp.Model;
-using SchoolTermInfoApp.View;
 
-using Xamarin.Forms;
 
 namespace SchoolTermInfoApp.View
 {
