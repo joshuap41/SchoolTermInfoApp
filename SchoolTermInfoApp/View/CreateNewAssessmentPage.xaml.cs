@@ -42,9 +42,7 @@ namespace SchoolTermInfoApp.View
                 var Type = Convert.ToString(assessmentType.SelectedItem);
 
 
-                //need to work on this validation
-
-                if (ObjCount > 0 && Type == "Objective Assessment" )
+                if (ObjCount > 0 && Type == "Objective Assessment")
                 {
                     DisplayAlert("Failure", "Only 1 Objective Assessment is allowed per course", "Ok");
                 }
@@ -52,13 +50,24 @@ namespace SchoolTermInfoApp.View
                 {
                     DisplayAlert("Failure", "Only 1 Performance Assessment is allowed per course", "Ok");
                 }
+                else if (createAssessment.StartDate < createAssessment.FinishDate)
+                {
+                    if (assessmentName.Text == "" || Convert.ToString(assessmentType.SelectedItem) == "")
+                    {
+                        DisplayAlert("Failure", "Please provide all assessment information", "OK");
+                    }
+                    else
+                    {
+                        conn.Insert(createAssessment);
+                        DisplayAlert("Success", "Assessment has been successfully created", "Ok");
+                        Navigation.PushAsync(new RequiredAssessmentsPage(selectedCourse));
+                    }
+                }
                 else
                 {
-                    conn.Insert(createAssessment);
-                    DisplayAlert("Success", "Assessment has been successfully created", "Ok");
+                    DisplayAlert("Failure", "The start date cannot be after the finish date", "OK");
                 }
             }
-            Navigation.PushAsync(new RequiredAssessmentsPage(selectedCourse));
         }
 
         void HomeButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)

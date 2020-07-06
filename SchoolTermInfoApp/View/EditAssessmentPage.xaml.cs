@@ -50,30 +50,24 @@ namespace SchoolTermInfoApp.View
             {
                 conn.CreateTable<Assessment>();
 
-                conn.Update(selectedAssessment);
-
-             //needless...
-                //var ObjCount = App.ObjectiveAssessmentCountCheck(selectedCourse);
-                //var PerCount = App.PerformanceAssessmentCountCheck(selectedCourse);
-                //var Type = Convert.ToString(assessmentType.SelectedItem);
-                ////var Changed = assessmentType.SelectedIndexChanged;
-
-
-                //if (ObjCount == 1 && )
-                //{
-                //    DisplayAlert("Failure", "Only 1 Objective Assessment is allowed per course", "Ok");
-                //}
-                //else if (PerCount == 1 && Type == "Performance Assessment")
-                //{
-                //    DisplayAlert("Failure", "Only 1 Performance Assessment is allowed per course", "Ok");
-                //}
-                //else
-                //{
-                //    conn.Update(selectedAssessment);
-                //    DisplayAlert("Success", "Assessment has been successfully created", "Ok");
-                //}
+                if (selectedAssessment.StartDate < selectedAssessment.FinishDate)
+                {
+                    if (assessmentName.Text == "")
+                    {
+                        DisplayAlert("Failure", "Please provide all assessment information", "OK");
+                    }
+                    else
+                    {
+                        conn.Update(selectedAssessment);
+                        DisplayAlert("Success", "Assessment has been successfully created", "Ok");
+                        Navigation.PushAsync(new RequiredAssessmentsPage(selectedCourse));
+                    }
+                }
+                else
+                {
+                    DisplayAlert("Failure", "The start date cannot be after the finish date", "OK");
+                }
             }
-            Navigation.PushAsync(new RequiredAssessmentsPage(selectedCourse));
         }
     }
 }

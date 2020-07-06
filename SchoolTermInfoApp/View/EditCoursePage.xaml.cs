@@ -31,8 +31,6 @@ namespace SchoolTermInfoApp.View
             courseNotifications.On = Convert.ToBoolean(selectedCourse.CourseNotifications);
         }
 
-        
-
         private void SaveButtonToolbarItem_Clicked(object sender, EventArgs e)
         {
             selectedCourse.CourseName = courseName.Text;
@@ -49,16 +47,33 @@ namespace SchoolTermInfoApp.View
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Course>();
-                int rows = conn.Update(selectedCourse);
 
-                if (rows > 0)
-                    DisplayAlert("Success", "Course successfully updated", "Ok");
+                if (selectedCourse.StartDate < selectedCourse.FinishDate)
+                {
+                    if (App.IsValidEmail(mentorEmail.Text))
+                    {
+                        if (courseName.Text == "" || mentorName.Text == "" || mentorPhoneNumber.Text == "" || Convert.ToString(courseStatus.SelectedItem) == "")
+                        {
+                            DisplayAlert("Failure", "Please provide all course and mentor information", "OK");
+                        }
+                        else
+                        {
+                            conn.Update(selectedCourse);
+                            DisplayAlert("Success", "Course successfully added", "OK");
+                            Navigation.PushAsync(new CoursePage(selectedCourse, currentTerm));
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("Failure", "Please enter a valid email address", "OK");
+                    }
+                }
                 else
-                    DisplayAlert("Failure", "Course failed to update", "Ok");
+                {
+                    DisplayAlert("Failure", "The start date cannot be after the finish date", "OK");
+                }
             }
-            Navigation.PushAsync(new TermPage(currentTerm));
         }
-
 
         private void HomeButtonToolbarItem_Clicked(object sender, EventArgs e)
         {

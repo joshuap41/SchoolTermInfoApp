@@ -31,26 +31,25 @@ namespace SchoolTermInfoApp
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Term>();
-                var rows = conn.Insert(createTerm);
 
-
-                if (rows > 0)
+                if (startDate.Date < finishDate.Date)
                 {
-                    DisplayAlert("Success", "New Term Added", "OK");
+                    if (termName.Text == "")
+                    {
+                        DisplayAlert("Failure", "Please provide all term information", "OK");
+                    }
+                    else
+                    {
+                        conn.Insert(createTerm);
+                        DisplayAlert("Success", "Term successfully added", "OK");
+                        Navigation.PushAsync(new MainPage());
+                    }
                 }
                 else
                 {
-                    DisplayAlert("Failure", "Term Failed to be Added", "OK");
+                    DisplayAlert("Failure", "The start date cannot be after the finish date", "OK");
                 }
-
-                //Make sure that the finish date is greater than the start date
-
-                //Check for nulls with the name and display an alert if it is bad
-
-                //if(createTerm.StartDate < createTerm.FinishDate)
-
             }
-            Navigation.PushAsync(new MainPage());
         }
     }
 }

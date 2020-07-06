@@ -37,32 +37,44 @@ namespace SchoolTermInfoApp.View
                 CourseNotifications = courseNotifications.On == true ? 1 : 0
             };
 
-
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Course>();
 
-                //checks courseList for selectedTerm
                 int count =  App.CourseCountCheck(selectedTerm);
 
-                var rows = conn.Insert(createCourse);
-
-                if (count <= 5 && rows > 0)
+                if (count <= 5)
                 {
-                    DisplayAlert("Success", "New Course Added", "OK");
+                    if (createCourse.StartDate < createCourse.FinishDate)
+                    {
+                        if (App.IsValidEmail(mentorEmail.Text))
+                        {
+                            if (courseName.Text == "" || mentorName.Text == "" || mentorPhoneNumber.Text == "" || Convert.ToString(courseStatus.SelectedItem) == "")
+                            {
+                                DisplayAlert("Failure", "Please provide all course and mentor information", "OK");
+                            }
+                            else
+                            {
+                                conn.Insert(createCourse);
+                                DisplayAlert("Success", "Course successfully added", "OK");
+                                Navigation.PushAsync(new TermPage(selectedTerm));
+                            }
+                        }
+                        else
+                        {
+                            DisplayAlert("Failure", "Please enter a valid email address", "OK");
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("Failure", "The start date cannot be after the finish date", "OK");
+                    }
                 }
                 else
                 {
-                    DisplayAlert("Failure", "Only 6 Courses Allowed Per Term", "OK");
+                    DisplayAlert("Failure", "Only 6 courses are allowed per term", "OK");
                 }
-
-                //Make sure that the finish date is greater than the start date
-
-                //Check for nulls with the name and display an alert if it is bad
-
-                //if(createTerm.StartDate < createTerm.FinishDate)
             }
-            Navigation.PushAsync(new TermPage(selectedTerm));
         }
 
         void HomeButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
