@@ -34,12 +34,9 @@ namespace SchoolTermInfoApp.View
             Navigation.PushAsync(new MainPage());
         }
 
-
-        //check with Lauren?
         void SaveButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {
             selectedAssessment.AssessmentName = assessmentName.Text;
-            //selectedAssessment.AssessmentType = Convert.ToString(assessmentType.SelectedItem);
             selectedAssessment.StartDate = startDate.Date;
             selectedAssessment.FinishDate = finishDate.Date;
             selectedAssessment.CourseNumber = selectedCourse.Id;
@@ -52,7 +49,7 @@ namespace SchoolTermInfoApp.View
 
                 if (selectedAssessment.StartDate < selectedAssessment.FinishDate)
                 {
-                    if (assessmentName.Text == "")
+                    if (string.IsNullOrWhiteSpace(assessmentName.Text))
                     {
                         DisplayAlert("Failure", "Please provide all assessment information", "OK");
                     }

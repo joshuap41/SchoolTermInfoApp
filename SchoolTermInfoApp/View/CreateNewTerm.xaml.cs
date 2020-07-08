@@ -19,8 +19,7 @@ namespace SchoolTermInfoApp
         }
 
         void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
-        { 
-
+        {
             Term createTerm = new Term()
             {
                 TermName = termName.Text,
@@ -34,7 +33,7 @@ namespace SchoolTermInfoApp
 
                 if (startDate.Date < finishDate.Date)
                 {
-                    if (termName.Text == "")
+                    if (string.IsNullOrWhiteSpace(termName.Text))
                     {
                         DisplayAlert("Failure", "Please provide all term information", "OK");
                     }
@@ -50,6 +49,11 @@ namespace SchoolTermInfoApp
                     DisplayAlert("Failure", "The start date cannot be after the finish date", "OK");
                 }
             }
+        }
+
+        void HomeButtonToolbarItem_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
         }
     }
 }

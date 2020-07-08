@@ -41,6 +41,16 @@
 
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Label Text="Notification Status:  "
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"/>
+                            <Label x:Name="assessmentNotifications1"
+                                   Padding="0,3,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
                             <Label Text="Start Date:   "
                                    FontAttributes="Bold"
                                    FontSize="Medium"/>
@@ -58,37 +68,25 @@
                                    Padding="0,3,0,0"/>
                         </StackLayout>
                     </ViewCell>
-
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,10,10,10">
-                            <Label Text="Notification Status:  "
-                                   FontAttributes="Bold"
-                                   FontSize="Medium"/>
-                            <Label x:Name="assessmentNotifications1"
-                                   Padding="0,3,0,0"/>
-                        </StackLayout>
-                    </ViewCell>
                 </TableSection>
             </TableView>
 
             <StackLayout>
                 <Button Text="Edit Assessment"
-                        x:Name="editAssessment"
+                        x:Name="EditAssessment"
                         Margin="0"
                         HeightRequest="35"
-                        Clicked="editAssessment_Clicked"
+                        Clicked="EditAssessment_Clicked"
                         BackgroundColor="{StaticResource blueColorForButton}"
                         TextColor="{StaticResource white}"/>
                 <Button Text="Delete Assessment"
-                        x:Name="deleteAssessment"
+                        x:Name="DeleteAssessment"
                         Margin="0"
                         HeightRequest="35"
-                        Clicked="deleteAssessment_Clicked"
+                        Clicked="DeleteAssessment_Clicked"
                         BackgroundColor="{StaticResource blueColorForButton}"
                         TextColor="{StaticResource white}"/>
             </StackLayout>
         </StackLayout>
-
     </ContentPage.Content>
-
 </ContentPage>

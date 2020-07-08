@@ -10,51 +10,48 @@
     <StackLayout>
 
         <StackLayout>
-            <!-- Place new controls here -->
             <Label Text="WGU"
                    FontSize="Title"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+                   VerticalOptions="Center"/>
         
             <Label Text="Keep the Course"
                    FontSize="Subtitle"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+                   VerticalOptions="Center"/>
 
             <Label Text="Created Terms"
                    FontSize="Medium"
                    FontAttributes="Italic"
                    HorizontalOptions="Center"
-                   Margin="0,20,0,10"
-                   />
+                   Margin="0,20,0,10"/>
         </StackLayout>
 
         <StackLayout VerticalOptions="CenterAndExpand" x:Name="CreatedTerms">
 
-
-            <!--Need to save "ItemSelected" to use later in the "termPage" Q for the teacher??-->
             <ListView x:Name="termListView"
                       ItemSelected="TermListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell IsEnabled="True">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                <Label Text="{Binding TermName}" VerticalOptions="Center" TextColor="Blue" />
-                                <Label Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}'}"  VerticalOptions="Center"/>
-                                <Label Text="{Binding FinishDate, StringFormat='{}{0:MM/dd/yyyy}'}" VerticalOptions="Center"/>
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Center">
+                                <Label Text="{Binding TermName}"
+                                       VerticalOptions="Center"
+                                       TextColor="Blue" />
+                                <Label Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}'}"
+                                       VerticalOptions="Center"/>
+                                <Label Text="{Binding FinishDate, StringFormat='{}{0:MM/dd/yyyy}'}"
+                                       VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </StackLayout>
 
-
-
-        <!--Need this to be under the terms-->
         <StackLayout>
             <Button 
                 x:Name="CreateNewTerm"

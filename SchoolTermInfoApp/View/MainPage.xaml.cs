@@ -19,22 +19,17 @@ namespace SchoolTermInfoApp
 
     public partial class MainPage : ContentPage
     {
-        
-
-        //public static string SelectedTerm = string.Empty;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            //personal info
             App.MyTermInformation();
-
+            //notifications
             bool appOpening = true;
 
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
@@ -54,9 +49,12 @@ namespace SchoolTermInfoApp
                 {
                     if (appOpening)
                     {
+                        var courseId = 0;
+
+                        var assessmentId = courseId;
+
                         appOpening = false;
 
-                        var courseId = 0;
                         foreach (Course course in courseList)
                         {
                             courseId++;
@@ -64,13 +62,15 @@ namespace SchoolTermInfoApp
                             if (course.CourseNotifications == 1)
                             {
                                 if (course.StartDate == DateTime.Today)
+                                {
                                     CrossLocalNotifications.Current.Show("Alert", $"{course.CourseName} begins today.", courseId);
+                                }
                                 if (course.FinishDate == DateTime.Today)
+                                {
                                     CrossLocalNotifications.Current.Show("Alert", $"{course.CourseName} finishes today.", courseId);
+                                }
                             }
                         }
-
-                        var assessmentId = courseId;
                         foreach (Assessment assessment in assessmentList)
                         {
                             assessmentId++;
@@ -78,9 +78,13 @@ namespace SchoolTermInfoApp
                             if (assessment.AssessmentNotifications == 1)
                             {
                                 if (assessment.StartDate == DateTime.Today)
+                                {
                                     CrossLocalNotifications.Current.Show("Alert", $"{assessment.AssessmentName} begins today.", assessmentId);
+                                }
                                 if (assessment.FinishDate == DateTime.Today)
+                                {
                                     CrossLocalNotifications.Current.Show("Alert", $"{assessment.AssessmentName} finishes today.", assessmentId);
+                                }  
                             }
                         }
                     }
@@ -92,7 +96,6 @@ namespace SchoolTermInfoApp
             }
         }
 
-
         //used to track the selected term.
         void TermListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
@@ -102,8 +105,6 @@ namespace SchoolTermInfoApp
             if (selectedTerm != null)
                 Navigation.PushAsync(new TermPage(selectedTerm));
         }
-
-
 
         private void CreateNewTerm_Clicked(object sender, EventArgs e)
         {

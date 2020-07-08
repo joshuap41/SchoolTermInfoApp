@@ -52,7 +52,9 @@ namespace SchoolTermInfoApp.View
                 {
                     if (App.IsValidEmail(mentorEmail.Text))
                     {
-                        if (courseName.Text == "" || mentorName.Text == "" || mentorPhoneNumber.Text == "" || Convert.ToString(courseStatus.SelectedItem) == "")
+                        if (string.IsNullOrWhiteSpace(courseName.Text) || string.IsNullOrWhiteSpace(mentorName.Text) ||
+                            string.IsNullOrWhiteSpace(mentorPhoneNumber.Text) ||
+                            string.IsNullOrWhiteSpace(Convert.ToString(courseStatus.SelectedItem)))
                         {
                             DisplayAlert("Failure", "Please provide all course and mentor information", "OK");
                         }

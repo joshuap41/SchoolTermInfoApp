@@ -16,17 +16,12 @@ namespace SchoolTermInfoApp.View
     public partial class TermPage : ContentPage
     {
         private Term selectedTerm;
-        //private int _selectedTermId;
-
 
         public TermPage(Term selectedTerm)
         {
             InitializeComponent();
 
-            //clean this up becuase I only need the term Id to pull from the TermNumber in the Course Table
             this.selectedTerm = selectedTerm;
-            //_selectedTermId = this.selectedTerm.Id;
-
         }
 
 
@@ -39,6 +34,7 @@ namespace SchoolTermInfoApp.View
                 conn.CreateTable<Course>();
                 var courseTable = conn.Table<Course>().ToList();
 
+                //queries the list of courses and displays for the selectedTerm
                 var listOfCourses = (from course in courseTable
                                      where course.TermNumber == selectedTerm.Id
                                      select course).ToList();
@@ -65,9 +61,7 @@ namespace SchoolTermInfoApp.View
             var selectedCourse = courseListView.SelectedItem as Course;
 
             if (selectedCourse != null)
-            {
                 Navigation.PushAsync(new CoursePage(selectedCourse, selectedTerm));
-            }
         }
 
 

@@ -22,7 +22,6 @@ namespace SchoolTermInfoApp.View
             this.selectedCourse = selectedCourse;
             this.currentTerm = currentTerm;
 
-            //change to binding in the UI Query and sort using linq to bind
             courseName.Text = selectedCourse.CourseName;
             mentorName.Text = selectedCourse.MentorName;
             mentorPhoneNumber.Text = selectedCourse.MentorPhoneNumber;
@@ -31,7 +30,6 @@ namespace SchoolTermInfoApp.View
             startDate.Text = selectedCourse.StartDate.ToString(App.dateFormat);
             finishDate.Text = selectedCourse.FinishDate.ToString(App.dateFormat);
             courseNotes.Text = selectedCourse.CourseNotes;
-            //change this around to look better with the switch
             courseNotifications.Text = selectedCourse.CourseNotifications == 1 ? "Enabled" : "Disabled";
         }
 
@@ -60,21 +58,10 @@ namespace SchoolTermInfoApp.View
             Navigation.PushAsync(new TermPage(currentTerm));
         }
 
-        //the old save button
-        //private void ToolbarItem_Clicked(object sender, EventArgs e)
-        //{
-        
-        //}
-
         private void HomeToolbarItem_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new MainPage());
         }
-
-        //private async void ShareButton_Clicked(System.Object sender, System.EventArgs e)
-        //{
-            
-        //}
 
         private async void ShareButton_Clicked_1(System.Object sender, System.EventArgs e)
         {
@@ -83,14 +70,6 @@ namespace SchoolTermInfoApp.View
                 Text = courseNotes.Text,
                 Title = "Share your notes on the course"
             });
-        }
-
-        void ShareButton_Clicked(System.Object sender, System.EventArgs e)
-        {
-        }
-
-        void ShareButton2_Clicked(System.Object sender, System.EventArgs e)
-        {
         }
     }
 }

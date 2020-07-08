@@ -47,7 +47,6 @@ namespace SchoolTermInfoApp
         {
         }
 
-
         public static int CourseCountCheck(Term selectedTerm)
         {
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
@@ -65,7 +64,6 @@ namespace SchoolTermInfoApp
 
                 return count;
             }
-
         }
 
         public static int ObjectiveAssessmentCountCheck(Course selectedCourse)
@@ -76,8 +74,7 @@ namespace SchoolTermInfoApp
 
                 var assessmentTable = conn.Table<Assessment>().ToList();
 
-            //need count of Objective Assessments for a specific course
-
+            //count of Objective Assessments for a specific course
                 var listOfAssessments = (from Assessment in assessmentTable
                                          where Assessment.CourseNumber ==selectedCourse.Id
                                          where Assessment.AssessmentType == "Objective Assessment"
@@ -87,8 +84,6 @@ namespace SchoolTermInfoApp
 
                 return objectiveAssessmentCount;
             }
-
-            
         }
 
         public static int PerformanceAssessmentCountCheck(Course selectedCourse)
@@ -99,8 +94,7 @@ namespace SchoolTermInfoApp
 
                 var assessmentTable = conn.Table<Assessment>().ToList();
 
-                //need count of Performance Assessments for a specific course
-
+            //count of Performance Assessments for a specific course
                 var listOfAssessments = (from Assessment in assessmentTable
                                          where Assessment.CourseNumber == selectedCourse.Id
                                          where Assessment.AssessmentType == "Performance Assessment"
@@ -110,16 +104,14 @@ namespace SchoolTermInfoApp
 
                 return performanceAssessmentCount;
             }
-
-
         }
-        //PerformanceAssessmentCheck()???
 
         public static void MyTermInformation()
         {
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 conn.CreateTable<Term>();
+
                 var termTable = conn.Table<Term>().ToList();
 
                 var listOfTerms = (from term in termTable
@@ -130,6 +122,7 @@ namespace SchoolTermInfoApp
                              select term.TermName == "Final Term").ToList();
 
                 conn.CreateTable<Course>();
+
                 conn.CreateTable<Assessment>();
 
                 if(termTable.Any() == false)
@@ -138,7 +131,7 @@ namespace SchoolTermInfoApp
                     {
                         TermName = "Final Term",
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 05)
+                        FinishDate = new DateTime(2020, 07, 07)
                     };
                     conn.Insert(myTerm);
 
@@ -151,7 +144,7 @@ namespace SchoolTermInfoApp
                         MentorEmail = "jjoh706@wgu.edu",
                         CourseStatus = "Active",
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 05),
+                        FinishDate = new DateTime(2020, 07, 07),
                         CourseNotes = "This class is awesome!",
                         CourseNotifications = 1,
                     };
@@ -162,7 +155,7 @@ namespace SchoolTermInfoApp
                         AssessmentName = "Ob Assessment 1",
                         CourseNumber = myCourse.Id,
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 05),
+                        FinishDate = new DateTime(2020, 07, 07),
                         AssessmentType = "Objective Assessment",
                         AssessmentNotifications = 1
                     };
@@ -173,28 +166,27 @@ namespace SchoolTermInfoApp
                         AssessmentName = "Per Assessment 2",
                         CourseNumber = myCourse.Id,
                         StartDate = new DateTime(2020, 07, 01),
-                        FinishDate = new DateTime(2020, 07, 05),
+                        FinishDate = new DateTime(2020, 07, 07),
                         AssessmentType = "Performance Assessment",
                         AssessmentNotifications = 1
                     };
                     conn.Insert(myPerAssessment);
                 }
-
             }
         }
-
 
         //https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
         public static bool IsValidEmail(string mentorEmail)
         {
             if (string.IsNullOrWhiteSpace(mentorEmail))
+            {
                 return false;
-
+            }
+                
             try
             {
                 // Normalize the domain
-                mentorEmail = Regex.Replace(mentorEmail, @"(@)(.+)$", DomainMapper,
-                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+                mentorEmail = Regex.Replace(mentorEmail, @"(@)(.+)$", DomainMapper, RegexOptions.None, TimeSpan.FromMilliseconds(200));
 
                 // Examines the domain part of the email and normalizes it.
                 string DomainMapper(Match match)

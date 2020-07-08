@@ -52,7 +52,8 @@ namespace SchoolTermInfoApp.View
                 }
                 else if (createAssessment.StartDate < createAssessment.FinishDate)
                 {
-                    if (assessmentName.Text == "" || Convert.ToString(assessmentType.SelectedItem) == "")
+                    if (string.IsNullOrWhiteSpace(assessmentName.Text) ||
+                        string.IsNullOrWhiteSpace(Convert.ToString(assessmentType.SelectedItem)))
                     {
                         DisplayAlert("Failure", "Please provide all assessment information", "OK");
                     }

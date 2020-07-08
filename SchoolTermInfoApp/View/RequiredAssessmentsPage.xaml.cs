@@ -29,6 +29,7 @@ namespace SchoolTermInfoApp.View
                 conn.CreateTable<Assessment>();
                 var assessmentTable = conn.Table<Assessment>().ToList();
 
+                //queries the list to display only the assessments for the selectedCourse
                 var listOfAssessments = (from assessment in assessmentTable
                                          where assessment.CourseNumber == selectedCourse.Id
                                          select assessment).ToList();

@@ -13,8 +13,6 @@
         
     </ContentPage.ToolbarItems>
     
-    
-    
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Edit Course"
@@ -29,6 +27,27 @@
                                Placeholder="..."
                                Label="Course Name:"/>
 
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Course Status:"
+                                   Padding="14,0,0,0"
+                                   VerticalOptions="Center"/>
+                            <Picker x:Name="courseStatus"
+                                    Title="Choose a Course Status...">
+                                <Picker.Items>
+                                    <x:String>Future</x:String>
+                                    <x:String>Active</x:String>
+                                    <x:String>Complete</x:String>
+                                    <x:String>Terminated</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <SwitchCell Text="Notifciation Status: "
+                                x:Name="courseNotifications"
+                                OnColor="AliceBlue"/>
+
                     <EntryCell x:Name="mentorName"
                                Placeholder="..."
                                Label="Mentor Name:"/>
@@ -40,23 +59,6 @@
                     <EntryCell x:Name="mentorEmail"
                                Placeholder="..."
                                Label="Mentor Email:"/>
-
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal"
-                                     Padding="12, 5" >
-                            <Label Text="Course Status:"
-                                   VerticalOptions="Center"/>
-                            <Picker x:Name="courseStatus"
-                                    Title="Status...">
-                                <Picker.Items>
-                                    <x:String>Future</x:String>
-                                    <x:String>Active</x:String>
-                                    <x:String>Complete</x:String>
-                                    <x:String>Terminated</x:String>
-                                </Picker.Items>
-                            </Picker>
-                        </StackLayout>
-                    </ViewCell>
 
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="13,0">
@@ -77,16 +79,8 @@
                     <EntryCell x:Name="courseNotes"
                                Placeholder="..."
                                Label="Course Notes:"/>
-
-                    <SwitchCell Text="Notifciation Status: "
-                                x:Name="courseNotifications"
-                                OnColor="AliceBlue"/>
-
-                    <!--Need to add Notifications here somehow-->
-
                 </TableSection>
             </TableView>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

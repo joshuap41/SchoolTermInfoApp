@@ -33,12 +33,12 @@ namespace SchoolTermInfoApp.View
             Navigation.PushAsync(new MainPage());
         }
 
-        void editAssessment_Clicked(System.Object sender, System.EventArgs e)
+        void EditAssessment_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new EditAssessmentPage(selectedCourse, selectedAssessment));
         }
 
-        void deleteAssessment_Clicked(System.Object sender, System.EventArgs e)
+        void DeleteAssessment_Clicked(System.Object sender, System.EventArgs e)
         {
             using(SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {

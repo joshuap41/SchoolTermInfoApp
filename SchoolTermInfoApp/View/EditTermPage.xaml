@@ -43,17 +43,6 @@
 
                 </TableSection>
             </TableView>
-
-            <!--Delete this when finished-->
-            <!--<Button 
-                x:Name="updateButton"
-                Margin="0, 0, 0, 20"
-                HeightRequest="35"
-                Text="Update Term"
-                Clicked="UpdateButton_Clicked"
-                BackgroundColor="{StaticResource blueColorForButton}"
-                TextColor="{StaticResource white}"/>-->
-            
             <Button 
                 x:Name="deleteButton"
                 Margin="0, 0, 0, 20"

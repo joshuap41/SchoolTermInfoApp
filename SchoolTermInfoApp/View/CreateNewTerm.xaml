@@ -7,12 +7,12 @@
              x:Class="SchoolTermInfoApp.CreateNewTerm">
 
     
-    <!--Might Change this to display the page name within the page and not the toolbar-->
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Home    "
+                     Clicked="HomeButtonToolbarItem_Clicked"/>
         <ToolbarItem
             Text="Save"
-            Clicked="ToolbarItem_Clicked"
-            />
+            Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
 
@@ -45,12 +45,8 @@
                             <DatePicker x:Name="finishDate"/>
                         </StackLayout>
                     </ViewCell>
-
                 </TableSection>
             </TableView>
-
         </StackLayout>
-
-
     </ContentPage.Content>
 </ContentPage>
