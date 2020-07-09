@@ -140,7 +140,7 @@ namespace SchoolTermInfoApp
                         TermNumber = myTerm.Id,
                         CourseName = "Mobile App Development",
                         MentorName = "Joshua Johnson",
-                        MentorPhoneNumber = "1(706)572-6816",
+                        MentorPhoneNumber = "1(555)555-5555",
                         MentorEmail = "jjoh706@wgu.edu",
                         CourseStatus = "Active",
                         StartDate = new DateTime(2020, 07, 01),
